@@ -135,5 +135,12 @@ namespace ClientBarometer.Implementations.Services
 
             return ChatMapper.Map<Responses.User>(newUser);
         }
+
+        public async Task RemoveMessages(Guid chatId, CancellationToken cancellationToken)
+        {
+             _chatUnitOfWork.Messages.RegisterDelete(chatId);
+             
+             await _chatUnitOfWork.Complete(cancellationToken);
+        }
     }
 }

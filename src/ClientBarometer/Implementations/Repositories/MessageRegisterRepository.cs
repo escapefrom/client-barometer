@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using ClientBarometer.Common.Infrastructure.Repositories;
 using ClientBarometer.Domain.Models;
 using ClientBarometer.Domain.Repositories;
@@ -9,6 +11,12 @@ namespace ClientBarometer.Implementations.Repositories
     {
         public MessageRegisterRepository(DbSet<Message> dbSet) : base(dbSet)
         {
+        }
+
+        public void RegisterDelete(Guid chatId)
+        {
+            var messages = DbSet.Where(x => x.ChatId == chatId);
+            DbSet.RemoveRange(messages);
         }
     }
 }
