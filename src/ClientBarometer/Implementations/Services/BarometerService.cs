@@ -51,7 +51,7 @@ namespace ClientBarometer.Implementations.Services
             var request = await GetPredictorRequest(chatId, prevValue, cancellationToken);
             if (!string.IsNullOrEmpty(request.CustomerFollowingMessage))
             {
-                var result = await _memoryCache.GetOrCreateAsync(GetKey(request), async entry =>
+                var result = await _memoryCache.GetOrCreateAsync(await GetKey(chatId), async entry =>
                 {
                     var answer = await _predictorClient.SafeGetValue(request, cancellationToken);
                     if (answer.IsSuccess)
@@ -169,14 +169,11 @@ namespace ClientBarometer.Implementations.Services
             return request;
         }
 
-        private string GetKey(GetPredictorRequest request)
-            => string.Join(" ",
-                new[]
-                {
-                    request.PrevBaro.ToString(),
-                    request.CustomerInitMessage,
-                    request.SellerAnswer,
-                    request.CustomerFollowingMessage
-                });
+        private async Task<string> GetKey(Guid chatId)
+        {
+            var messages = await _messageReadRepository.GetLastMessages(chatId, 1, CancellationToken.None);
+            
+            return string.Join(" ", messages.Select(x => x.Id.ToString())) + " "+ chatId;
+        }
     }
 }
