@@ -64,8 +64,8 @@ namespace ClientBarometer
             // Telegram
             services.AddSingleton<INgrokService>(s => new NgrokService(_telegramBotConfig.NgrokHost));
             services.AddScoped(serv => new TelegramBotClient(_telegramBotConfig.Token));
-            services.AddHostedService<TelegramBotInitService>();
-            
+            //services.AddHostedService<TelegramBotInitService>();
+
             // Clients
             services.AddHttpClient<IPredictorClient, PredictorClient>("predictor", c =>
             {
@@ -87,6 +87,7 @@ namespace ClientBarometer
             services.AddScoped<IChatReadRepository, ChatReadRepository>();
             services.AddScoped<IBarometerReadRepository, BarometerReadRepository>();
             services.AddScoped<IMessageReadRepository, MessageReadRepository>();
+            services.AddScoped<IObjectionHandlingReadRepository, ObjectionHandlingReadRepository>();
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IChatUnitOfWork, ChatUnitOfWork>();
         }

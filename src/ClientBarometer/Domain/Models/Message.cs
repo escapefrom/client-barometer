@@ -12,6 +12,7 @@ namespace ClientBarometer.Domain.Models
         [Required]
         public Guid ChatId { get; set; }
         public string Text { get; set; }
+        public string[] SplittedText { get => Text.ToLower().Split(" "); }
         public DateTime CreatedAt { get; set; }
         [Timestamp]
         public byte[] RowVersion { get; private set; }

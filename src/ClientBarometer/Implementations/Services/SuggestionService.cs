@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,10 +15,12 @@ namespace ClientBarometer.Domain.Services
     public class SuggestionService : ISuggestionService
     {
         private readonly IMessageReadRepository _messageReadRepository;
+        private readonly IObjectionHandlingReadRepository _objectionHandlingReadRepository;
 
-        public SuggestionService(IMessageReadRepository messageReadRepository)
+        public SuggestionService(IMessageReadRepository messageReadRepository, IObjectionHandlingReadRepository objectionHandlingReadRepository)
         {
             _messageReadRepository = messageReadRepository;
+            _objectionHandlingReadRepository = objectionHandlingReadRepository;
         }
 
         public static string[] Suggestions = new[]
@@ -31,11 +34,21 @@ namespace ClientBarometer.Domain.Services
         
         public async Task<Responses.Suggestions> GetSuggestions(Guid chatId, CancellationToken cancellationToken)
         {
-            var messages = await _messageReadRepository.GetMessages(chatId, 0, int.MaxValue, cancellationToken);
-            var suggestions = Suggestions.Where((sg, i) => messages.Length % 2 == i % 2).ToArray();
+            var message = (await _messageReadRepository.GetLastMessages(chatId, 1, cancellationToken)).FirstOrDefault();
+            var objections = await _objectionHandlingReadRepository.GetAllObjections(0, int.MaxValue, cancellationToken);
+
+            var objectionClass = objections.Select((obj) => new KeyValuePair<string, int>(
+                obj.ObjectionClass,
+                obj.SplittedExample
+                    .Sum((se) => message.SplittedText.Contains(se) ? 1 : 0)))
+                    .Aggregate(new KeyValuePair<string, int>("Неопределено", -1), (curMax, tuple) => tuple.Value > curMax.Value ? tuple : curMax).Key;
+
+
+
+            //var suggestions = Suggestions.Where((sg, i) => messages.Length % 2 == i % 2).ToArray();
             return new Responses.Suggestions
             {
-                Messages = suggestions
+                //Messages = suggestions
             };
         }
     }

@@ -1,0 +1,228 @@
+﻿using ClientBarometer.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ClientBarometer.DataAccess.Maps
+{
+    public static class ObjectionMap
+    {
+        private static List<Objection> _vocabulary = new()
+        {
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не вижу интереса в этом продукте" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не вижу ничего интересного " },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "ваш продукт нам не интересен" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не интересно предложение в принципе" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не понимаю, как это может быть интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "мне не интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "нам не интересно это изучать" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "мы не заинтересованы в этом" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "простите, не заинтересовало" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не заинтересован" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "мы не видим в этом ничего интересного" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "ничего интересного в этом не видим" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не видим в этом ничего интересного" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "ваше предложение просто не интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "просто не интересно" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "у нас другой поставщик услуг" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "у нас другой подрядчик" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "мы пользуемся другим продуктов" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "нам больше нравится другой товар" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "мы уже пользуемся продуктами ваших конкурентов" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "мы уже пользуемся конкурирующими продуктами" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "мы пользуемся продуктами другой компании" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "у нас есть решение от другого вендора" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "мы уже приняли о работе с другими" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "другие участники рынка нам более интересны" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "уже пользуемся чужими продуктами" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "уже пользуемся иными продуктами" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "уже пользуемся продуктами других подрядчиков" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "другие поставщики уже работают с нами" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "у нас этим занимаются другие люди" },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "другие люди уже покрыли это " },
+            new Objection { ObjectionClass = "Мы работаем с другими", Example = "у нас это организовано с другим подрядчиком" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "у нас и так все есть" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "у нас и так все нормально" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "у нас все ок" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "нам ничего не нужно у нас все нормально" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "нам ничего не нужно у нас все есть" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "все и так хорошо" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "ничего не надо все и так хорошо" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "все и так хорошо ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "мы ничего не хотим" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "не хотим ничего вообще все есть" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "у нас все есть ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "ничего нам не нужно" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "нет спасибо ничего не нужно" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "спасибо у нас все уже есть не надо ничего" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "нет не надо ничего все есть" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "у нас как-то все есть ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не нужно/ у нас все есть", Example = "как-то вышло что все есть не надо спасибо" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "пришлите пожалуйста информацию" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "свяжитесь пожалуйста со мной по скайпу" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "свяжитесь по почте" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "пришлите свое кп" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "пришлите информацию на емейл" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "перешлите информацию" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "свяжитесь по скайпу" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "пришлите информацию сейчас" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "хочу чтобы вы прислали информацию в письме" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "хочу получить от вас письмо с информацией" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "мне нужно получить от вас информацию по почте" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "хочу видеть от вас письмо" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "пришлите кп на мою почту" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "вышлите информацию на почту в письме" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "вышлите кп на почту в письме" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "в письме на почту вышлите информацию" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "мне нужна информация на моем почтовом ящике" },
+            new Objection { ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}", Example = "на почтовый ящик вышлите информацию" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "я перезвоню вам сам" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "хочу вам позднее перезвонить" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "я вам сам наберу" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "сам наберу" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "давайте я перезвоню позднее" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "он вам перезвонит" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "он хочет перезвонить вам позднее" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "он позднее наберет вам сам" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "позднее наберу вам" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "позднее наберем" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "позднее наберет" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "наберу позже наберу потом после завтра как-нибудь потом" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "хочу позвонить вам позднее" },
+            new Objection { ObjectionClass = "Сам перезвонит", Example = "позвоню вам потом после позднее как-нибудь" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "у нас нет того кто этим занимается" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "у нас нет специалиста не наняли никого кто разбирается не понимаем ничего в этом этим не занимаемся не разбираемся" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "мы это никогда не делали не понимаем как делать ничего не делали никак не знаем" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "нет человека кто этим занимается непонятно кто это будет делать" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "никто это делать не будет" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "нет никого кто будет это делать непонятно нет специалистов" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "нет таких людей нет обученного персонала " },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "не знаю кто будет этим заниматься" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "никто не будет этим заниматься" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "некому этим заниматься никто не сможет" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "нет специалиста никакого никого знающих людей нет" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "некому заниматься" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "никто не будет это делать нет человека" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "не хватает специалиста по этим делам" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "нет специалиста никакого" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "некому этим заняться" },
+            new Objection { ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался", Example = "заняться некому этим всем" },
+            new Objection { ObjectionClass = "Не могу соединить / Запрещено соединять", Example = "не могу соединить вас с руководством" },
+            new Objection { ObjectionClass = "Не могу соединить / Запрещено соединять", Example = "у нас нельзя соединять" },
+            new Objection { ObjectionClass = "Не могу соединить / Запрещено соединять", Example = "не могу вас с ним соединить прямо сейчас никак не могу вас соединить" },
+            new Objection { ObjectionClass = "Не могу соединить / Запрещено соединять", Example = "никак не могу просто никак нельзя вот так вот" },
+            new Objection { ObjectionClass = "Не могу соединить / Запрещено соединять", Example = "нельзя соединять с руководством с начальством" },
+            new Objection { ObjectionClass = "Не могу соединить / Запрещено соединять", Example = "мы не можем соединить вас с руководствам" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не вижу интереса в этом продукте" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не вижу ничего интересного " },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "ваш продукт нам не интересен" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не интересно предложение в принципе" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не понимаю, как это может быть интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "мне не интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "нам не интересно это изучать" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "мы не заинтересованы в этом" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "простите, не заинтересовало" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не заинтересован" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "мы не видим в этом ничего интересного" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "ничего интересного в этом не видим" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "не видим в этом ничего интересного" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "ваше предложение просто не интересно" },
+            new Objection { ObjectionClass = "Нам это просто не интересно", Example = "просто не интересно не нужно " },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "нам ничего не надо у нас все есть" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "нам это не надо " },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "нам ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "нам ничего не нужно у нас все нормально" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "нам ничего не нужно у нас все есть" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "не надо спасибо" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "ничего не надо все и так хорошо" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "все и так хорошо ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "мы ничего не хотим" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "не хотим ничего вообще все есть" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "у нас все есть ничего не надо" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "ничего нам не нужно" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "нет спасибо ничего не нужно" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "спасибо у нас все уже есть не надо ничего" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "нет не надо ничего все есть" },
+            new Objection { ObjectionClass = "Нам ничего не надо", Example = "у нас как-то все есть ничего не надо" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "у нас все есть" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "у нас и так все есть" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "у нас и так все нормально" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "у нас все ок" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "все и так хорошо" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "и так все есть все хорошо спасибо" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "все хорошо ничего не надо" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "все уже установлено все на месте" },
+            new Objection { ObjectionClass = "У нас все есть", Example = "все есть спасибо все ок не надо ничего" },
+            new Objection { ObjectionClass = "Дорого", Example = "слишком дорого для нас" },
+            new Objection { ObjectionClass = "Дорого", Example = "накладно для нас дорого" },
+            new Objection { ObjectionClass = "Дорого", Example = "не потянем по цене" },
+            new Objection { ObjectionClass = "Дорого", Example = "цена не устраивает дорого слишком" },
+            new Objection { ObjectionClass = "Дорого", Example = "слишком большие расходы" },
+            new Objection { ObjectionClass = "Дорого", Example = "не устраивает цена" },
+            new Objection { ObjectionClass = "Дорого", Example = "у нас нет таких денег не можем позволить себе" },
+            new Objection { ObjectionClass = "Дорого", Example = "слишком накладно " },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "для нас это сейчас не нужно сейчас не актуально" },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "сейчас не подходит " },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "сейчас другие проблемы у нас" },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "сейчас другие задачи сейчас не в рассмотрении" },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "в данный момент не актуально" },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "сейчас не актуально" },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "не актуально в данный момент" },
+            new Objection { ObjectionClass = "Сейчас не актуально", Example = "не нужно сейчас никак не купим в данный момент" },
+            new Objection { ObjectionClass = "Я подумаю/мне нужно подумать", Example = "мне нужно подумать я подумаю " },
+            new Objection { ObjectionClass = "Я подумаю/мне нужно подумать", Example = "отвечу позднее потом отвечу не могу сейчас ответить" },
+            new Objection { ObjectionClass = "Я подумаю/мне нужно подумать", Example = "отвечу потом " },
+            new Objection { ObjectionClass = "Я подумаю/мне нужно подумать", Example = "подумаю и отвечу нужно подумать нужно обмозговать" },
+            new Objection { ObjectionClass = "Я подумаю/мне нужно подумать", Example = "я подумаю нужно покумекать посообразить" },
+            new Objection { ObjectionClass = "Я подумаю/мне нужно подумать", Example = "подумаю и отвечу потом" },
+            new Objection { ObjectionClass = "Я подумаю/мне нужно подумать", Example = "обдумаю и отвечу обдумать думать подумать надо" },
+            new Objection { ObjectionClass = "Пришлите КП/подробные материалы", Example = "пришлите подробную информацию" },
+            new Objection { ObjectionClass = "Пришлите КП/подробные материалы", Example = "подробные материалы вышлите инфо на почту" },
+            new Objection { ObjectionClass = "Пришлите КП/подробные материалы", Example = "вышлите кп на почту в письме информацию " },
+            new Objection { ObjectionClass = "Пришлите КП/подробные материалы", Example = "нужны подробные материалы дополнительные " },
+            new Objection { ObjectionClass = "Пришлите КП/подробные материалы", Example = "прошу вас выслать подробные материалы пришлите кп" },
+            new Objection { ObjectionClass = "Нет денег", Example = "у нас нет столько денег на проект нет денег" },
+            new Objection { ObjectionClass = "Нет денег", Example = "высокая стоимость не потянем нет денег" },
+            new Objection { ObjectionClass = "Нет денег", Example = "нет денег слишком дорого" },
+            new Objection { ObjectionClass = "Отказ оплачивать счет", Example = "оплачу позднее не готов оплатить сейчас думаю подождет" },
+            new Objection { ObjectionClass = "Отказ оплачивать счет", Example = "отказ оплачивать счет отказываюсь оплачивать счет пока" },
+            new Objection { ObjectionClass = "Отказ оплачивать счет", Example = "я отказываюсь оплачивать потому что" },
+            new Objection { ObjectionClass = "Отказ оплачивать счет", Example = "оплачу потом позднее не готов" },
+            new Objection { ObjectionClass = "Работали с вами, не понравилось", Example = "работали с вами, не понравилось" },
+            new Objection { ObjectionClass = "Работали с вами, не понравилось", Example = "с вами работали раньше ранее не понравилось в прошлом уже было не хотим возвращаться" }
+
+        };
+
+        public static ModelBuilder Build<T>(this ModelBuilder modelBuilder) where T : Objection
+        {
+            var entityBuilder = modelBuilder.Entity<T>();
+
+            // Main
+            entityBuilder.ToTable("objection");
+
+            // Indexes
+            entityBuilder.HasIndex(_ => _.Id);
+
+            // Values
+            entityBuilder.Property(_ => _.Id)
+                .ValueGeneratedOnAdd()
+                .HasValueGenerator<GuidValueGenerator>();
+
+            entityBuilder.Property(_ => _.RowVersion)
+                .IsRowVersion();
+
+            _vocabulary.ForEach((obj) => obj.Id = Guid.NewGuid());
+
+            entityBuilder.HasData(_vocabulary);
+
+            return modelBuilder;
+        }
+    }
+}
