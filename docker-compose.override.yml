@@ -16,7 +16,7 @@ services:
   back:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
       - Front__Url=http://front:3000
     ports:
       - "5000:80"
