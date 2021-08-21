@@ -12,5 +12,7 @@ namespace ClientBarometer.Domain.Services
     public interface IBarometerService
     {
         Task<Responses.BarometerValue> GetValue(Guid chatId, CancellationToken cancellationToken);
+
+        Task CreateOrUpdate(Guid chatId, int newValue, CancellationToken cancellationToken);
     }
 }

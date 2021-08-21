@@ -75,6 +75,12 @@ namespace ClientBarometer.Controllers
         public async Task<BarometerValue> GetBarometerValue(Guid chatId, CancellationToken cancellationToken)
             => await _barometerService.GetValue(chatId, cancellationToken);
 
+        [HttpPost("reset")]
+        public async Task Reset(Guid chatId, CancellationToken cancellationToken)
+        {
+            await _barometerService.CreateOrUpdate(chatId, BarometerConsts.DEFAULT_BAROMETER_VALUE, cancellationToken);
+            await _chatService.RemoveMessages(chatId, cancellationToken);
+        }
 
         [HttpGet("suggestions")]
         [ProducesResponseType(typeof(Suggestions), 200)]

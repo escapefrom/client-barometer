@@ -88,7 +88,7 @@ namespace ClientBarometer.Implementations.Services
             }
         }
         
-        private async Task CreateOrUpdate(Guid chatId, int newValue, CancellationToken cancellationToken)
+        public async Task CreateOrUpdate(Guid chatId, int newValue, CancellationToken cancellationToken)
         {
             if (!await _barometerReadRepository.Contains(chatId, cancellationToken))
             {
