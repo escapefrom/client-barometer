@@ -17,5 +17,6 @@ namespace ClientBarometer.Domain.Services
         Task<Responses.Message> CreateMessage(CreateMessageRequest request, CancellationToken cancellationToken);
         Task<Responses.Chat> CreateChat(CreateChatRequest request, CancellationToken cancellationToken);
         Task<Responses.User> CreateUser(CreateUserRequest request, CancellationToken cancellationToken);
+        Task RemoveMessages(Guid chatId, CancellationToken cancellationToken);
     }
 }
