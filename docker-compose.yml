@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  db:
+    image: mysql
+    restart: unless-stopped
+    networks:
+      - docker-network
+
+  back:
+    image: ${DOCKER_REGISTRY-}back
+    build:
+      context: .
+      dockerfile: src/ClientBarometer/Dockerfile
+    restart: unless-stopped
+    networks:
+      - docker-network
+
+  front:
+    image: node:12-alpine
+    command: sh -c "CI=true yarn start"
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - docker-network
+        
+  ngrok:
+    image: wernight/ngrok
+    container_name: ngrok
+    restart: unless-stopped
+    networks:
+      - docker-network
+
+  predictor:
+    image: ${DOCKER_REGISTRY-}predictor
+    build:
+      context: ./src/CustomerAgreementPredictor
+      dockerfile: dockerfile
+    restart: unless-stopped
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+     driver: bridge
