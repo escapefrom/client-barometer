@@ -1,0 +1,3 @@
+[submodule "src/CustomerAgreementPredictor"]
+	path = src/CustomerAgreementPredictor
+	url = git@github.com:MisterPillow/CustomerAgreementPredictor.git
