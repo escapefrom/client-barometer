@@ -4,7 +4,7 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { ChatPage } from './components/ChatPage';
 import { Chats } from './components/Chats';
-
+import { StatsPage } from './components/StatsPage';
 import './App.css'
 
 export default class App extends Component {
@@ -16,6 +16,7 @@ export default class App extends Component {
         <Route exact path='/' component={Home} />
         <Route exact path='/chat/:chatId' component={ChatPage} />
         <Route exact path='/chat' component={Chats} />
+        <Route exact path='/stats' component={StatsPage} />
       </Layout>
     );
   }
