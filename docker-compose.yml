@@ -18,6 +18,8 @@ services:
 
   front:
     image: node:12-alpine
+    build:
+      context: ./src/Front
     command: sh -c "CI=true yarn start"
     working_dir: /app
     restart: unless-stopped
