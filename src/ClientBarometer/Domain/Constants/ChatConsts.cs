@@ -10,6 +10,9 @@ namespace ClientBarometer.Domain.Constants
         public const string DEFAULT_CHAT_SOURCE_ID = "352328891";
         public const string DEFAULT_USER_SOURCE_ID = "Admin";
 
+        public const string DEFAULT_AUDIO_SOURCE_ID = "Audio-123";
+
         public const string TELEGRAM_SOURCE = "Telegram";
+        public const string AUDIO_SOURCE = "Audio";
     }
 }
