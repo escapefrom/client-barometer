@@ -6,6 +6,7 @@ using ClientBarometer.Domain.Repositories;
 using ClientBarometer.Domain.Services;
 using ClientBarometer.Domain.UnitsOfWork;
 using ClientBarometer.Extensions;
+using ClientBarometer.Hubs;
 using ClientBarometer.Implementations.Clients;
 using ClientBarometer.Implementations.Repositories;
 using ClientBarometer.Implementations.Services;
@@ -51,15 +52,24 @@ namespace ClientBarometer
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddCors(options => options.AddPolicy("AllowAll", conf =>
             {
-                conf.AllowAnyOrigin();
+                // conf.AllowAnyOrigin();
                 conf.AllowAnyHeader();
                 conf.AllowAnyMethod();
+                conf.AllowCredentials();
+                conf.WithOrigins(new[]
+                {
+                    "http://localhost:3000",
+                    "http://cb.escapefrom.ru:3000",
+                    "http://cb.escapefrom.ru",
+                    "https://cb.escapefrom.ru",
+                });
             }));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Storage API", Version = "v1" });
                 c.CustomSchemaIds(type => type.FullName);
             });
+            services.AddSignalR();
 
             // Telegram
             services.AddSingleton<INgrokService>(s => new NgrokService(_telegramBotConfig.NgrokHost));
@@ -82,7 +92,8 @@ namespace ClientBarometer
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBarometerService, BarometerService>();
             services.AddScoped<ISuggestionService, SuggestionService>();
-            
+            services.AddSingleton<IChatHubService, ChatHubService>();
+
             // Repositories
             services.AddScoped<IChatReadRepository, ChatReadRepository>();
             services.AddScoped<IBarometerReadRepository, BarometerReadRepository>();
@@ -130,6 +141,7 @@ namespace ClientBarometer
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/api/signal/chat");
             });
         }
 

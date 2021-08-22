@@ -1,10 +1,11 @@
 import { SendOutlined } from "@ant-design/icons";
 import { Button, Input, message, Spin } from "antd";
 import dayjs from "dayjs";
-import React, { CSSProperties, FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, FormEvent, useEffect, useState } from "react";
 import { sessionClient } from "../api/httpClient";
 import useApi from "../api/useApi";
 import { Bubble } from "./Bubble";
+import useChatContext from "./ChatHubContext";
 
 const mainContainerStyle: CSSProperties = {
     width: "100%",
@@ -15,7 +16,7 @@ const mainContainerStyle: CSSProperties = {
 const titleStyle: CSSProperties = {
     margin: "0 2rem",
     paddingBottom: "1rem",
-    borderBottom: "1px solid lightgray" 
+    borderBottom: "1px solid lightgray",
 };
 
 const chatContainerStyle: CSSProperties = {
@@ -68,31 +69,29 @@ export interface ChatProps {
 }
 
 export const Chat: React.FC<ChatProps> = ({ chatId, username }) => {
-    const [text, setText] = useState<string>("");
-
-    const { firstFetchDone, data, fetch } = useApi({
+    const { loading, data, fetch, setData } = useApi({
         initial: [],
         fetchData: sessionClient.messages,
     });
 
-    const timer = useRef<NodeJS.Timer>();
-
-    const fetchMore = useCallback(async () => {
-        if (timer.current) {
-            clearInterval(timer.current);
-        }
-        try {
-            await fetch(chatId);
-        } catch (e) {
-            message.error(e.message);
-        }
-        timer.current = setInterval(fetchMore, 3000);
+    useEffect(() => {
+        fetch(chatId).catch((e) => message.error(e.message));
     }, [chatId, fetch]);
 
-    useEffect(() => {
-        fetchMore();
-    }, [fetchMore]);
+    const { connection } = useChatContext();
 
+    useEffect(() => {
+        connection.on("NewMessage", (message) => {
+            setData((prev) => [JSON.parse(message), ...prev]);
+        });
+        return () => connection.off("NewMessage");
+    }, [connection, setData]);
+
+    useEffect(() => {
+        fetch(chatId).catch((e) => message.error(e.message));
+    }, [chatId, fetch]);
+
+    const [text, setText] = useState<string>("");
     const onSend = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -104,7 +103,7 @@ export const Chat: React.FC<ChatProps> = ({ chatId, username }) => {
     };
 
     const spinner = (
-        <div style={loadingStyle}>
+        <div key={"spin"} style={loadingStyle}>
             <div>
                 <Spin />
                 <span> Loading...</span>
@@ -114,11 +113,13 @@ export const Chat: React.FC<ChatProps> = ({ chatId, username }) => {
 
     return (
         <div style={mainContainerStyle}>
-            <div style={titleStyle}>Продаваемый товар: <b>Красные кроссовки</b></div>
+            <div style={titleStyle}>
+                Продаваемый товар: <b>Красные кроссовки</b>
+            </div>
             <div style={chatContainerStyle}>
-                {!firstFetchDone
+                {loading
                     ? spinner
-                    : data.map((item) => (
+                    : data.map((item, index) => (
                           <Bubble
                               right={username === item.username}
                               username={item.username}
@@ -127,13 +128,6 @@ export const Chat: React.FC<ChatProps> = ({ chatId, username }) => {
                               key={item.id}
                           />
                       ))}
-                {/* {
-                        hasNextPage && (
-                            <div className="flex self-center my-2">
-                            <a className="ease transition-all delay-75 bg-gray-600 text-center text-sm text-white rounded-full p-2 px-5 cursor-pointer hover:bg-gray-800" onClick={() => fetchNextPage()}>Earlier messages</a>
-                            </div>
-                            )
-                        } */}
             </div>
             <form style={formStyle} onSubmit={onSend}>
                 <Input.Group style={inputGroupStyle}>

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,13 +8,15 @@ using ClientBarometer.Domain.Models;
 using ClientBarometer.Domain.Repositories;
 using ClientBarometer.Domain.Services;
 using ClientBarometer.Domain.UnitsOfWork;
+using ClientBarometer.Hubs;
 using ClientBarometer.Implementations.Exceptions;
 using ClientBarometer.Implementations.Mappers;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
-using Telegram.Bot;
 using Requests = ClientBarometer.Contracts.Requests;
 using Responses = ClientBarometer.Contracts.Responses;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace ClientBarometer.Implementations.Services
 {
@@ -27,6 +28,10 @@ namespace ClientBarometer.Implementations.Services
         private readonly IChatUnitOfWork _chatUnitOfWork;
         private readonly IBarometerReadRepository _barometerReadRepository;
         private readonly IBarometerRegisterRepository _barometerRegisterRepository;
+        private readonly IHubContext<ChatHub> _chatHubContext;
+        private readonly IChatHubService _chatHubService;
+        private readonly IBarometerService _barometerService;
+        private readonly ISuggestionService _suggestionService;
         private readonly ILogger<ChatService> _logger;
 
         private static IMapper ChatMapper => Create.ChatMapper.Please;
@@ -36,19 +41,27 @@ namespace ClientBarometer.Implementations.Services
             IChatReadRepository chatReadRepository,
             IUserReadRepository userReadRepository,
             IChatUnitOfWork chatUnitOfWork,
+            IHubContext<ChatHub> chatHubContext,
+            IChatHubService chatHubService,
+            IBarometerService barometerService,
+            ISuggestionService suggestionService,
             ILogger<ChatService> logger)
         {
             _messageReadRepository = messageReadRepository;
             _chatReadRepository = chatReadRepository;
             _userReadRepository = userReadRepository;
             _chatUnitOfWork = chatUnitOfWork;
+            _chatHubContext = chatHubContext;
+            _chatHubService = chatHubService;
+            _barometerService = barometerService;
+            _suggestionService = suggestionService;
             _logger = logger;
         }
 
         public async Task<Responses.Message[]> GetMessages(Guid chatId, int takeLast,
             CancellationToken cancellationToken)
         {
-            var messages = 
+            var messages =
                 await _messageReadRepository.GetLastMessages(chatId, takeLast, cancellationToken);
             var users = await _userReadRepository.GetUsers(chatId, cancellationToken);
             var result = ChatMapper.Map<Responses.Message[]>(messages);
@@ -59,7 +72,7 @@ namespace ClientBarometer.Implementations.Services
 
         public async Task<Responses.User> GetUser(Guid chatId, CancellationToken cancellationToken)
         {
-            var users =  await _userReadRepository.GetUsers(chatId, cancellationToken);
+            var users = await _userReadRepository.GetUsers(chatId, cancellationToken);
             var user = users.FirstOrDefault(us => us.SourceId != ChatConsts.DEFAULT_USER_SOURCE_ID);
             return ChatMapper.Map<Responses.User>(user);
         }
@@ -85,21 +98,46 @@ namespace ClientBarometer.Implementations.Services
             {
                 throw new ChatNotFoundException(request.ChatSourceId);
             }
+
             var chat = await _chatReadRepository.Get(request.ChatSourceId, cancellationToken);
             if (!await _userReadRepository.Contains(request.UserSourceId, cancellationToken))
             {
                 throw new UserNotFoundException(request.UserSourceId);
             }
+
             var user = await _userReadRepository.Get(request.UserSourceId, cancellationToken);
-            
+            var chatId = chat?.Id ?? request.ChatId;
+
             newMessage.CreatedAt = DateTime.Now;
-            newMessage.ChatId = chat?.Id ?? request.ChatId;
+            newMessage.ChatId = chatId;
             newMessage.UserId = user.Id;
             _chatUnitOfWork.Messages.RegisterNew(newMessage);
 
             await _chatUnitOfWork.Complete(cancellationToken);
 
-            return ChatMapper.Map<Responses.Message>(newMessage);
+            var message = ChatMapper.Map<Responses.Message>(newMessage);
+            message.Username = user.Name;
+
+            var jsonSettings = new JsonSerializerSettings
+                {ContractResolver = new CamelCasePropertyNamesContractResolver()};
+            var messageJson = JsonConvert.SerializeObject(message, jsonSettings);
+            var barometer = await _barometerService.GetValue(chatId, cancellationToken);
+            var barometerJson = JsonConvert.SerializeObject(barometer, jsonSettings);
+            var suggestions = await _suggestionService.GetSuggestions(chatId, cancellationToken);
+            var suggestionsJson = JsonConvert.SerializeObject(suggestions, jsonSettings);
+
+            var clients = await _chatHubService.GetChatSubscribers(chatId);
+            foreach (var client in clients)
+            {
+                await _chatHubContext.Clients.Client(client)
+                    .SendAsync("NewMessage", messageJson, cancellationToken);
+                await _chatHubContext.Clients.Client(client)
+                    .SendAsync("NewBarometer", barometerJson, cancellationToken);
+                await _chatHubContext.Clients.Client(client)
+                    .SendAsync("NewSuggestions", suggestionsJson, cancellationToken);
+            }
+
+            return message;
         }
 
         public async Task<Responses.Chat> CreateChat(Requests.CreateChatRequest request, CancellationToken cancellationToken)
@@ -110,7 +148,7 @@ namespace ClientBarometer.Implementations.Services
             {
                 throw new ChatAlreadyExistsException(request.SourceId);
             }
-            
+
             newChat.CreatedAt = DateTime.Now;
             _chatUnitOfWork.Chats.RegisterNew(newChat);
 
