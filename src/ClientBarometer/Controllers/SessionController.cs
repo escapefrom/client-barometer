@@ -50,6 +50,9 @@ namespace ClientBarometer.Controllers
             request.UserSourceId = ChatConsts.DEFAULT_USER_SOURCE_ID;
             // TODO: Remove source attribute in "create to source"
             request.Source = ChatConsts.TELEGRAM_SOURCE;
+
+            _suggestionService.SaveUsedSuggestion(request.ChatId, request.SuggestionId);
+
             await _sourceProcessor.ProcessToSource(request, cancellationToken);
             return Ok();
         }

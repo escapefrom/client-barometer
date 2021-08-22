@@ -9,5 +9,6 @@ namespace ClientBarometer.Contracts.Requests
         public Guid ChatId { get; set; }
         public string UserSourceId { get; set; }
         public string Text { get; set; }
+        public Guid SuggestionId { get; set; }
     }
 }

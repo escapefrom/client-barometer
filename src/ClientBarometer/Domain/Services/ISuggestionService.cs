@@ -12,5 +12,6 @@ namespace ClientBarometer.Domain.Services
     public interface ISuggestionService
     {
         Task<Responses.Suggestions> GetSuggestions(Guid chatId, CancellationToken cancellationToken);
+        void SaveUsedSuggestion(Guid chatId, Guid suggestionId);
     }
 }

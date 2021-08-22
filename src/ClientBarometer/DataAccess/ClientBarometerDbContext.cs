@@ -9,6 +9,7 @@ namespace ClientBarometer.DataAccess
         public ClientBarometerDbContext(DbContextOptions<ClientBarometerDbContext> options)
             : base(options){}
 
+        public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<Objection> Objections { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<User> Users { get; set; }
@@ -19,6 +20,7 @@ namespace ClientBarometer.DataAccess
         {
             base.OnModelCreating(builder);
 
+            builder.Build<Suggestion>();
             builder.Build<Objection>();
             builder.Build<Message>();
             builder.Build<User>();
