@@ -30,6 +30,7 @@ namespace ClientBarometer
     {
         private readonly TelegramBotConfig _telegramBotConfig;
         private readonly PredictorConfig _predictorConfig;
+        private readonly SpeechToTextConfig _speechToTextConfig;
         private readonly MemoryCacheConfig _memoryCacheConfig;
         
         public Startup(IConfiguration configuration)
@@ -37,6 +38,7 @@ namespace ClientBarometer
             Configuration = configuration;
             _telegramBotConfig = configuration.GetSection("TelegramBot").Get<TelegramBotConfig>();
             _predictorConfig = configuration.GetSection("Predictor").Get<PredictorConfig>();
+            _speechToTextConfig = configuration.GetSection("SpeechToText").Get<SpeechToTextConfig>();
             _memoryCacheConfig = configuration.GetSection("MemoryCache").Get<MemoryCacheConfig>();
         }
 
@@ -83,6 +85,10 @@ namespace ClientBarometer
             {
                 c.BaseAddress = new Uri(_predictorConfig.Host);
             });
+            services.AddHttpClient<ISpeechToTextClient, SpeechToTextClient>("speech_to_text", c =>
+            {
+                c.BaseAddress = new Uri(_speechToTextConfig.Host);
+            });
             
             // Services
             services.AddMemoryCache(entry =>
@@ -95,6 +101,7 @@ namespace ClientBarometer
             services.AddScoped<IBarometerService, BarometerService>();
             services.AddScoped<ISuggestionService, SuggestionService>();
             services.AddSingleton<IChatHubService, ChatHubService>();
+            services.AddSingleton<IAudioService, AudioService>();
 
             // Repositories
             services.AddScoped<IChatReadRepository, ChatReadRepository>();

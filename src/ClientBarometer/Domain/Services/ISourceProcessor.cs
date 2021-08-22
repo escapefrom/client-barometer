@@ -7,7 +7,7 @@ namespace ClientBarometer.Domain.Services
 {
     public interface ISourceProcessor
     {
-        Task ProcessToSource(CreateMessageRequest message, CancellationToken cancellationToken);
-        Task ProcessFromSource(CreateMessageRequest message, CancellationToken cancellationToken);
+        Task ProcessToSource(IMessageRequest message, CancellationToken cancellationToken);
+        Task ProcessFromSource(IMessageRequest message, CancellationToken cancellationToken);
     }
 }

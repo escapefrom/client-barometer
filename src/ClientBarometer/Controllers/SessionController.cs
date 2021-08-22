@@ -51,7 +51,21 @@ namespace ClientBarometer.Controllers
             // TODO: Remove source attribute in "create to source"
             request.Source = ChatConsts.TELEGRAM_SOURCE;
 
-            _suggestionService.SaveUsedSuggestion(request.ChatId, request.SuggestionId);
+            if (request.SuggestionId.HasValue)
+            {
+                _suggestionService.SaveUsedSuggestion(request.ChatId, request.SuggestionId.Value);
+            }
+
+            await _sourceProcessor.ProcessToSource(request, cancellationToken);
+            return Ok();
+        }
+        
+        [HttpPost("send_audio")]
+        public async Task<IActionResult> SendAudioMessage([FromBody]CreateAudioMessageRequest request, CancellationToken cancellationToken)
+        {
+            request.ChatSourceId = ChatConsts.DEFAULT_AUDIO_SOURCE_ID;
+            // TODO: Remove source attribute in "create to source"
+            request.Source = ChatConsts.AUDIO_SOURCE;
 
             await _sourceProcessor.ProcessToSource(request, cancellationToken);
             return Ok();

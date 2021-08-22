@@ -37,4 +37,10 @@
     <Folder Include="Migrator\Migrations\ClientBarometerDb" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="some.pcm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
