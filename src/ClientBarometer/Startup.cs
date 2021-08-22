@@ -58,7 +58,9 @@ namespace ClientBarometer
                 conf.AllowCredentials();
                 conf.WithOrigins(new[]
                 {
+                    "http://localhost:5000",
                     "http://localhost:3000",
+                    "http://cb.inikolaev.ru:3000",
                     "http://cb.escapefrom.ru:3000",
                     "http://cb.escapefrom.ru",
                     "https://cb.escapefrom.ru",
