@@ -128,7 +128,7 @@ namespace ClientBarometer.Implementations.Services
             var createChat = new CreateChatRequest
             {
                 SourceId = request.ChatSourceId,
-                Source = ChatConsts.TELEGRAM_SOURCE
+                Source = request.Source
             };
             await _chatService.CreateChat(createChat, cancellationToken);
         }
