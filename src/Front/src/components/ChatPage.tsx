@@ -1,7 +1,5 @@
-import React, { CSSProperties, useEffect } from "react";
+import React, { CSSProperties } from "react";
 import { useParams } from "react-router";
-import { sessionClient } from "../api/httpClient";
-import useApi from "../api/useApi";
 import { Barometer } from "./Barometer";
 import { Chat } from "./Chat";
 import { ChatContext, useChat } from "./ChatHubContext";
