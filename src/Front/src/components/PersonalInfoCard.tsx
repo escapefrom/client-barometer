@@ -28,10 +28,6 @@ export const PersonalInfoCard: React.FC<PersonalInfoCardProps> = ({ chatId }) =>
     });
 
     useEffect(() => {
-        fetch(chatId);
-    }, [chatId, fetchInfo]);
-
-    useEffect(() => {
         fetchUser(chatId)
             .then((user) => fetchInfo(user.id))
             .catch((e) => message.error(e.message));
@@ -42,10 +38,6 @@ export const PersonalInfoCard: React.FC<PersonalInfoCardProps> = ({ chatId }) =>
     }
 
     const { username, name, age } = info;
-
-    if (loading) {
-        return <Spin />;
-    }
 
     return (
         <Card title="Personal info" style={cardStyle}>
