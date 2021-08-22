@@ -1,5 +1,5 @@
 import { Button, message, Spin } from "antd";
-import React, { useEffect } from "react";
+import React, { CSSProperties, useEffect } from "react";
 import { Suggestion } from "../api/client";
 import { sessionClient } from "../api/httpClient";
 import useApi from "../api/useApi";
@@ -9,17 +9,15 @@ type SuggestionsProps = {
     chatId: string;
 };
 
-const buttonStyle = {
+const buttonStyle: CSSProperties = {
     margin: "0.5rem",
+    maxWidth: "300px",
+    whiteSpace: "normal",
+    height: "auto",
 };
 
 export const SuggestionsCard: React.FC<SuggestionsProps> = ({ chatId }) => {
-    const {
-        loading,
-        data: suggestions,
-        fetch,
-        setData
-    } = useApi({
+    const { loading, data, fetch, setData } = useApi({
         initial: {},
         fetchData: sessionClient.suggestions,
     });
@@ -32,6 +30,7 @@ export const SuggestionsCard: React.FC<SuggestionsProps> = ({ chatId }) => {
 
     useEffect(() => {
         connection.on("NewSuggestions", (message) => {
+            console.log("NewSuggestions", message);
             setData(JSON.parse(message));
         });
         return () => connection.off("NewSuggestions");
@@ -53,13 +52,11 @@ export const SuggestionsCard: React.FC<SuggestionsProps> = ({ chatId }) => {
         return <Spin />;
     }
 
-    const { messages } = suggestions;
-
     return (
         <>
-            {messages?.map((message, index) => (
+            {data.messages?.map((message, index) => (
                 <Button key={index} type="primary" style={buttonStyle} onClick={onClick(message)}>
-                    {message}
+                    {message.text}
                 </Button>
             ))}
         </>
