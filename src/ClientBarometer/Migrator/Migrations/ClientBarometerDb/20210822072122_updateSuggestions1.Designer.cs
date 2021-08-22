@@ -3,14 +3,16 @@ using System;
 using ClientBarometer.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClientBarometer.Migrator.Migrations.ClientBarometerDb
 {
     [DbContext(typeof(ClientBarometerDbContext))]
-    partial class ClientBarometerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210822072122_updateSuggestions1")]
+    partial class updateSuggestions1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,1111 +145,1111 @@ namespace ClientBarometer.Migrator.Migrations.ClientBarometerDb
                     b.HasData(
                         new
                         {
-                            Id = new Guid("34198b0e-c7ef-4fae-91ca-680494a2a6f1"),
+                            Id = new Guid("29b39e4a-ab31-49b8-90b8-b316bd1558a0"),
                             Example = "не вижу интереса в этом продукте",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("966191df-3fa3-487d-89e4-8bd091ffce33"),
+                            Id = new Guid("8925bc9b-c0da-470c-b7df-305daeeb17cf"),
                             Example = "не интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("f1936100-c323-400a-ab40-f2489f538f35"),
+                            Id = new Guid("e4585da9-a290-4e51-80f5-abeac5c5ba93"),
                             Example = "не вижу ничего интересного ",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("3e1f30ae-6f0e-468d-b8b9-d8e517098e81"),
+                            Id = new Guid("2e4149fe-cb84-4683-9ae8-e6c8f504ecd3"),
                             Example = "ваш продукт нам не интересен",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("a9034629-a0fe-48be-a7e0-c946f6352b22"),
+                            Id = new Guid("0184ea2e-2102-42aa-90f1-f45963d3eca5"),
                             Example = "не интересно предложение в принципе",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("9e6df21f-1bc3-40be-91dc-dc2ac8163bff"),
+                            Id = new Guid("1d2be4dc-a41a-441d-b82c-be4ced5af6f0"),
                             Example = "не понимаю, как это может быть интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("7dc3ba91-61eb-47c6-a8dc-573f6e7b945b"),
+                            Id = new Guid("eb4e31eb-4cfe-4c08-8575-bc1c6619421e"),
                             Example = "мне не интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("33d8ec9d-7358-43bd-8d56-9864ded9dcc4"),
+                            Id = new Guid("57d9c813-58ad-49de-a249-a91317664de5"),
                             Example = "нам не интересно это изучать",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("bf0b1130-4ee3-47f2-9ca9-ce8991c12c5c"),
+                            Id = new Guid("76893115-4616-4446-b41d-9d232b7ca642"),
                             Example = "мы не заинтересованы в этом",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("5d887239-e3fc-4b29-8320-905e5b435b4d"),
+                            Id = new Guid("1057fdc5-b207-43fe-9e5a-68c09dd3f76b"),
                             Example = "простите, не заинтересовало",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("af1297d5-176c-466f-89cf-cb7a808c8f01"),
+                            Id = new Guid("4f8c0380-85c9-41f6-bd44-06ea2b1f43a1"),
                             Example = "не заинтересован",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("1c85bf93-73bf-4ad3-a1ed-57afe0eb0f36"),
+                            Id = new Guid("00f69b3b-6ae6-4c4c-b8d1-b09326ad9a30"),
                             Example = "мы не видим в этом ничего интересного",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("5e438735-f19b-4ea0-800c-7dc9a2cdfa02"),
+                            Id = new Guid("f05305ca-abb3-4e5a-b7cd-e2bed7f38554"),
                             Example = "ничего интересного в этом не видим",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("f446d157-75e9-470e-b1e7-022a90763184"),
+                            Id = new Guid("69601d93-2dba-4eec-97b5-19f29e69c45c"),
                             Example = "не видим в этом ничего интересного",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("5b92e4a6-3442-41d7-b65b-2177ddc90a08"),
+                            Id = new Guid("7cd8512c-5da8-4294-b00d-2d52201eff1d"),
                             Example = "ваше предложение просто не интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("6b2d97a1-2274-4328-9241-7b23bf9f322e"),
+                            Id = new Guid("40ac78e4-121e-476a-8926-e9daf65dab01"),
                             Example = "просто не интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("fe760751-0a5e-4871-9514-1b4fa5e2df09"),
+                            Id = new Guid("385ee925-0514-40bb-b323-c57b6f2844a4"),
                             Example = "у нас другой поставщик услуг",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("25ae8df0-683c-4fc6-a93c-7115fa3b027a"),
+                            Id = new Guid("9e9934e6-75af-47f1-b517-2e5ad9f3f82e"),
                             Example = "у нас другой подрядчик",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("a8a8ac43-4d4b-43c7-b02b-2069458b2c53"),
+                            Id = new Guid("18180541-c2d4-409e-8c6e-3fe7cd14ccd3"),
                             Example = "мы пользуемся другим продуктов",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("67eadafc-3c6e-4d6e-bc30-b3d1bb8f280e"),
+                            Id = new Guid("db9a6582-ac6e-401a-a35d-b80abf16c16a"),
                             Example = "нам больше нравится другой товар",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("bb8b1d51-d872-47eb-9916-8b182222ceff"),
+                            Id = new Guid("66b27bcb-ff8b-4198-9223-c09fcf72f6df"),
                             Example = "мы уже пользуемся продуктами ваших конкурентов",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("76c4f1b5-0061-48e4-8767-c129345dc16c"),
+                            Id = new Guid("2ac391d0-4f2e-463f-8a4a-e1fc9a582088"),
                             Example = "мы уже пользуемся конкурирующими продуктами",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("dab3f64d-a1bf-4e8f-8aec-29db0210a884"),
+                            Id = new Guid("600c19a6-bc8c-4430-83f2-efbfcb353aa7"),
                             Example = "мы пользуемся продуктами другой компании",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("90ac1bb9-ad21-4ef8-a742-85ae8dbbdf51"),
+                            Id = new Guid("646b8a6e-6d4f-40d4-9fa1-2ff9a71170e8"),
                             Example = "у нас есть решение от другого вендора",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("f3f0cc5d-3236-4108-a445-bb427bf45ad7"),
+                            Id = new Guid("b39c0dac-e5c7-426c-b4b0-8a9f92e4db4c"),
                             Example = "мы уже приняли о работе с другими",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("4dd211a0-41ac-4c90-891c-8af4787b3f3c"),
+                            Id = new Guid("b59fc382-6d02-4ddd-bcf2-dcf1cb67a771"),
                             Example = "другие участники рынка нам более интересны",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("df7d4be6-2cdb-4f29-acd0-f6b0c505548b"),
+                            Id = new Guid("0f7654ef-0e78-4407-9f3b-6806a35b00f6"),
                             Example = "уже пользуемся чужими продуктами",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("f80ed038-0b37-46f6-9e8c-124d84604e0f"),
+                            Id = new Guid("27656de7-4fa1-4686-93c7-4469e90e0901"),
                             Example = "уже пользуемся иными продуктами",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("63c492af-7a52-4184-afff-7576595069bf"),
+                            Id = new Guid("0d132578-8683-4f85-8bf9-29ea37cc9968"),
                             Example = "уже пользуемся продуктами других подрядчиков",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("779ea790-c5d8-4a4c-bbaa-4cbca6bc5292"),
+                            Id = new Guid("4391c4e0-e73d-412d-a813-a75d44d41a51"),
                             Example = "другие поставщики уже работают с нами",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("f3f4d687-bba9-469d-b611-a8b3526bde57"),
+                            Id = new Guid("34ba022b-355a-41b7-b0f6-997cd19b0693"),
                             Example = "у нас этим занимаются другие люди",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("255becfb-6667-4dd1-ad3a-e88c14a49cb6"),
+                            Id = new Guid("109fd61a-bcd9-4ce3-9ac5-51d5a6d3eb1f"),
                             Example = "другие люди уже покрыли это ",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("e8466383-cd63-46cd-81f0-faadc6d49441"),
+                            Id = new Guid("afe1304b-6545-4597-bfe7-152001fb4162"),
                             Example = "у нас это организовано с другим подрядчиком",
                             ObjectionClass = "Мы работаем с другими"
                         },
                         new
                         {
-                            Id = new Guid("cd660149-7204-4d80-97be-7094fcaadb40"),
+                            Id = new Guid("9e6fe1a1-7c11-414d-9afe-d30032680ab1"),
                             Example = "у нас и так все есть",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("f78f8a4b-6e55-4a61-af2c-c7d1200b37b8"),
+                            Id = new Guid("c9df2a70-d154-4d72-92d3-9dcdb1674d62"),
                             Example = "у нас и так все нормально",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("474ea87d-b671-4873-bc58-2dbe316049f8"),
+                            Id = new Guid("f71c74cd-47c5-4603-a169-45f024f923a0"),
                             Example = "у нас все ок",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("2e397ed0-c650-4118-83a9-60ede96e8ec2"),
+                            Id = new Guid("ebe0dfec-8356-436f-a18e-205c28da9aa6"),
                             Example = "нам ничего не нужно у нас все нормально",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("55e346e9-b2b0-4031-80df-d61b291cfd75"),
+                            Id = new Guid("edb050d4-11f1-448d-9fd5-5b70e1c726df"),
                             Example = "нам ничего не нужно у нас все есть",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("d34124fa-13fa-4bdb-865c-21d6409d4373"),
+                            Id = new Guid("91b4c45d-6976-4591-96a7-de3d8c4387a5"),
                             Example = "все и так хорошо",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("7afe7a4a-0e09-4038-ac81-4cb90f9a3835"),
+                            Id = new Guid("923440ae-c442-46f9-b85c-5cbc19f23100"),
                             Example = "ничего не надо",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("d09ff688-f14f-46a0-8b9f-fb5524ff4a2e"),
+                            Id = new Guid("10f6e034-d533-4f22-92e8-a686bccc0557"),
                             Example = "ничего не надо все и так хорошо",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("f4f28769-b367-46d5-99af-f43bfcd299e2"),
+                            Id = new Guid("2b14b562-2f02-479a-8b2b-fa433ebbeca7"),
                             Example = "все и так хорошо ничего не надо",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("7c6a2104-951f-4a63-b6c5-dbb3e021ef2f"),
+                            Id = new Guid("c5b9a92a-5efd-4e25-81e3-e9ca5a440d78"),
                             Example = "мы ничего не хотим",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("f5a0adad-394a-4ef3-af1d-a2629373a588"),
+                            Id = new Guid("a00c4757-ff08-47da-b495-c85c0bcc88cf"),
                             Example = "не хотим ничего вообще все есть",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("fb413bfa-90aa-4cc4-9d69-e67f0adf30ca"),
+                            Id = new Guid("e55ef532-c675-4d2f-85b1-db6c5f395d1b"),
                             Example = "у нас все есть ничего не надо",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("9a4dfc80-7ab0-4071-9117-e4c5d4e93953"),
+                            Id = new Guid("3101da9a-20f8-4ee3-92e1-6705fe17d932"),
                             Example = "ничего нам не нужно",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("7362fe0a-7103-49eb-a8df-922c0921992f"),
+                            Id = new Guid("ef75b28f-ed3a-459d-a275-b372c34e6ad6"),
                             Example = "нет спасибо ничего не нужно",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("659c0884-03ec-423b-a818-330b294c7f44"),
+                            Id = new Guid("91866658-7e7f-4046-9141-314e39f36e4c"),
                             Example = "спасибо у нас все уже есть не надо ничего",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("42cd387f-b8ca-4371-a327-39d1b53d3360"),
+                            Id = new Guid("2b8f4bd5-5d5f-4ddc-b28c-aa568318624d"),
                             Example = "нет не надо ничего все есть",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("f08bb17e-730d-410c-a160-1525204b5134"),
+                            Id = new Guid("344a6732-7274-4913-a81c-1ae5c2b8f112"),
                             Example = "у нас как-то все есть ничего не надо",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("a165d72f-6bfa-4afb-819b-9008a657b55b"),
+                            Id = new Guid("e836fb90-da92-4f90-bd23-48fd3edeb52b"),
                             Example = "как-то вышло что все есть не надо спасибо",
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("65d45e32-9e0d-4087-942b-f656fe5d30ac"),
+                            Id = new Guid("ae0a98de-27c7-452a-8568-b673b814d6bf"),
                             Example = "пришлите пожалуйста информацию",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("22c5c8c2-55e2-4d14-a854-1bcb5e04d253"),
+                            Id = new Guid("a0ad7f52-f71b-4b2c-8823-5fa6a35af5d7"),
                             Example = "свяжитесь пожалуйста со мной по скайпу",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("7e4bd282-5d28-4298-8212-ebeef27f0a11"),
+                            Id = new Guid("7c099020-9ef9-4c07-8740-45848a82ca06"),
                             Example = "свяжитесь по почте",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("e65f5f81-59b9-4ccb-b408-2368ed5dc033"),
+                            Id = new Guid("c15b2419-38c8-45b0-a357-30be35e3732a"),
                             Example = "пришлите свое кп",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("cf513aef-c652-4f1f-be2a-042a60a4c729"),
+                            Id = new Guid("501946f2-36cd-429e-9886-a80d9ededd2d"),
                             Example = "пришлите информацию на емейл",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("bc18401e-cd9b-41bf-a6f1-ce597d044910"),
+                            Id = new Guid("288a7cf3-eaac-401e-b44a-93511e359172"),
                             Example = "перешлите информацию",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("71410f64-fc66-437f-b4f6-f4de69919a08"),
+                            Id = new Guid("7d3f164d-db67-49d4-afc5-44202bde6f00"),
                             Example = "свяжитесь по скайпу",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("7441bfb1-ff5e-4b64-bb4a-3e7825b1d52c"),
+                            Id = new Guid("fdb2bda8-9a89-45e1-84ee-2e723464fe58"),
                             Example = "пришлите информацию сейчас",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("426450bb-7924-4ab3-8fcb-8989474d8fbf"),
+                            Id = new Guid("1f532603-0003-4597-8e78-2f29322174fe"),
                             Example = "хочу чтобы вы прислали информацию в письме",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("f595aacd-20bc-4c05-93d2-ccc6a293b6a4"),
+                            Id = new Guid("2f44c959-75cc-4e42-a913-5a6176f7d726"),
                             Example = "хочу получить от вас письмо с информацией",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("aabeefc8-5b12-4677-98e9-c2c5e51c4f90"),
+                            Id = new Guid("98906e4e-f260-4459-8bed-4641f55f85c4"),
                             Example = "мне нужно получить от вас информацию по почте",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("ea936ec7-6e18-45e2-8602-d5a2f64193c7"),
+                            Id = new Guid("92c35759-8fb9-495d-9ec1-7bbd9eb5e60a"),
                             Example = "хочу видеть от вас письмо",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("61404f15-42d9-4ffc-9344-65c221399751"),
+                            Id = new Guid("b1997a4b-b04b-47d3-ab86-89164705a954"),
                             Example = "пришлите кп на мою почту",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("e9a2b8ab-1792-4bf3-8d27-62de70269c3c"),
+                            Id = new Guid("c5c7ca46-b76c-4698-ab94-a8a1b7349fcf"),
                             Example = "вышлите информацию на почту в письме",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("65df9559-beab-4534-8621-ced354874927"),
+                            Id = new Guid("d3929131-9056-45a6-95e9-b8af63ab7f3d"),
                             Example = "вышлите кп на почту в письме",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("1fb98c3d-c014-47a2-b797-7bc076afdf6d"),
+                            Id = new Guid("c2b2978c-9173-48ba-ae8b-abc42c49aa8e"),
                             Example = "в письме на почту вышлите информацию",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("5c414dc1-dde2-4819-b0c5-eedecfd84f46"),
+                            Id = new Guid("adb7f0e7-5d07-4dd4-8e0c-b8a1b71f0301"),
                             Example = "мне нужна информация на моем почтовом ящике",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("160d27cc-a312-4cea-9b4d-376d44a7ff11"),
+                            Id = new Guid("713d3662-9878-4d63-bf2a-74d73b916197"),
                             Example = "на почтовый ящик вышлите информацию",
                             ObjectionClass = "Пришлите информацию new Objection{ ObjectionClass = скайп, КП, эл.почту}"
                         },
                         new
                         {
-                            Id = new Guid("870309a4-3154-470f-8ef9-7c76407e6cf7"),
+                            Id = new Guid("49b5eb97-a3e2-4e20-9c9c-078301985489"),
                             Example = "я перезвоню вам сам",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("3ca83f6a-a037-481f-839f-214d1294c602"),
+                            Id = new Guid("c4c04424-e4bc-4d08-b5bf-7a2e4a9a80f5"),
                             Example = "хочу вам позднее перезвонить",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("38717e3a-32be-4a5b-9ed8-c894bc27c3ee"),
+                            Id = new Guid("f0cd99d9-8c81-43cd-8550-4770e73dd3bb"),
                             Example = "я вам сам наберу",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("3bc20e6f-1cae-425a-ae4b-658b6eba007d"),
+                            Id = new Guid("69e338bd-9df8-4514-a7ab-a55257c853e1"),
                             Example = "сам наберу",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("30e8f259-1165-4683-aa04-90bd64b3426a"),
+                            Id = new Guid("b9a6551b-43c0-4982-b08d-f71a928fb1dd"),
                             Example = "давайте я перезвоню позднее",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("efbf50c3-825f-4e59-a07a-a8f50ffc13c1"),
+                            Id = new Guid("f4d48e6d-84da-4913-bcd6-5e2f3b2459fd"),
                             Example = "он вам перезвонит",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("c1769ed5-69a2-4407-b3cd-72f7e5542cf2"),
+                            Id = new Guid("26439f16-3483-4dea-9f2d-6b86991bc5af"),
                             Example = "он хочет перезвонить вам позднее",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("1bd03cfc-a3a0-45f1-9080-5c99ea04826f"),
+                            Id = new Guid("b1644961-7191-4f84-bd03-cf21c08fbda5"),
                             Example = "он позднее наберет вам сам",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("9815e0ba-c3c5-4e54-a9e5-0d05df896097"),
+                            Id = new Guid("182fd9cc-9c67-43af-9b84-f0c9f3f0083d"),
                             Example = "позднее наберу вам",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("4cf2fc4a-a4cd-4d1b-8efd-43d53c8cd696"),
+                            Id = new Guid("e2182b96-2ca0-4f33-b049-7f53df7dda49"),
                             Example = "позднее наберем",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("473168ed-5f0c-4b0a-a175-57173367354e"),
+                            Id = new Guid("1ac799d2-1f32-4e28-bd30-d268d40e169c"),
                             Example = "позднее наберет",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("01a5d178-c164-4e87-b5b7-4f4904da7138"),
+                            Id = new Guid("19fb9f3c-75cd-4033-b744-572954074fb6"),
                             Example = "наберу позже наберу потом после завтра как-нибудь потом",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("a197b6d5-0e80-46e3-9391-39d94d16d5ee"),
+                            Id = new Guid("49770995-545e-4efa-8655-7d6bc3d0b6cf"),
                             Example = "хочу позвонить вам позднее",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("5a66736a-df89-4ffa-a76a-3c457ee68176"),
+                            Id = new Guid("b6ec5bde-12d8-44d4-a149-8d1175b2cf74"),
                             Example = "позвоню вам потом после позднее как-нибудь",
                             ObjectionClass = "Сам перезвонит"
                         },
                         new
                         {
-                            Id = new Guid("25774bb5-bbae-4450-ab60-00e19e5d465d"),
+                            Id = new Guid("4e8d43ff-2519-4f35-b237-9090d7c7e3a5"),
                             Example = "у нас нет того кто этим занимается",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("cbcd5906-ddf0-43d2-aa4e-d00956a05a6d"),
+                            Id = new Guid("59deed12-c495-4161-bb7d-b1449809cd40"),
                             Example = "у нас нет специалиста не наняли никого кто разбирается не понимаем ничего в этом этим не занимаемся не разбираемся",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("04f78e30-f842-4272-877e-b21173a2160a"),
+                            Id = new Guid("127705c0-296e-4eec-841a-96ce4936b608"),
                             Example = "мы это никогда не делали не понимаем как делать ничего не делали никак не знаем",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("8e9499a9-3e8d-4166-a035-8a51a13f204f"),
+                            Id = new Guid("859706fb-b158-4c52-be6e-22ac14c00af0"),
                             Example = "нет человека кто этим занимается непонятно кто это будет делать",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("e0531c45-b41a-46fe-8c10-9afff914c387"),
+                            Id = new Guid("5ae7cd7d-e42e-4f5d-8248-7683a5e8a47e"),
                             Example = "никто это делать не будет",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("c087b1ca-9c19-4099-ac56-24a6a60e1612"),
+                            Id = new Guid("7b4f2117-56b2-456f-a6c4-2b6dd6d7fde9"),
                             Example = "нет никого кто будет это делать непонятно нет специалистов",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("1d31c373-3c07-4524-8f4d-b107835a5baf"),
+                            Id = new Guid("3a3ad3a5-c0f2-49ad-84a5-ccb2aafe7aeb"),
                             Example = "нет таких людей нет обученного персонала ",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("a0c3a56a-626b-4d59-bbcf-87093888a12b"),
+                            Id = new Guid("36428cae-c70c-4c82-882f-d7f0e84e6b61"),
                             Example = "не знаю кто будет этим заниматься",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("5e535fe4-1001-48af-8a6f-2d20cceb702a"),
+                            Id = new Guid("10e06ddf-e82c-49fb-b310-f7f9e9364320"),
                             Example = "никто не будет этим заниматься",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("4e6771ad-6e9d-4b76-9e59-89b987d53214"),
+                            Id = new Guid("8d68b0e3-b357-45d3-87cb-3b305c0b8aba"),
                             Example = "некому этим заниматься никто не сможет",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("88fd1b4a-ee51-4e46-b070-2feeffd91b13"),
+                            Id = new Guid("874d0a24-a001-4a71-a5ee-460502cd1eb0"),
                             Example = "нет специалиста никакого никого знающих людей нет",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("cf9f2ad2-96d2-493d-8744-95030b6a427d"),
+                            Id = new Guid("04170e58-0683-4de3-99ec-3f32db242a23"),
                             Example = "некому заниматься",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("550dddb7-e92b-470f-bde8-9ad80730ac5a"),
+                            Id = new Guid("fef75c66-ada4-42c1-9ff1-67bc97f9b4b5"),
                             Example = "никто не будет это делать нет человека",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("95cda23b-3517-4d50-acb3-1f05fba3fa12"),
+                            Id = new Guid("812f15aa-f24a-4ad4-b82c-ae9c31f81ec6"),
                             Example = "не хватает специалиста по этим делам",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("a88ecb65-04ed-4911-9773-cd2b84f2cc82"),
+                            Id = new Guid("513179d7-c1de-4081-b5be-5421a817a95b"),
                             Example = "нет специалиста никакого",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("eab8b608-afe8-4274-a5ed-696cd0a8e791"),
+                            Id = new Guid("f0475f99-0f2c-4fbb-b9de-3d5bc8ba1068"),
                             Example = "некому этим заняться",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("d96357b2-c49d-4bd4-baec-12fc4a8107d0"),
+                            Id = new Guid("3b481f0f-8ac3-4d61-93e6-c1064650f158"),
                             Example = "заняться некому этим всем",
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался"
                         },
                         new
                         {
-                            Id = new Guid("75d1a564-66c2-4d64-8387-7c83a3418417"),
+                            Id = new Guid("7ad2b9ca-e0e9-43f8-b352-f11c53b70270"),
                             Example = "не могу соединить вас с руководством",
                             ObjectionClass = "Не могу соединить / Запрещено соединять"
                         },
                         new
                         {
-                            Id = new Guid("326df8db-0aea-4d00-bc49-5f29cc7dde25"),
+                            Id = new Guid("f326a8e8-d308-47c1-a50d-26a12273f82c"),
                             Example = "у нас нельзя соединять",
                             ObjectionClass = "Не могу соединить / Запрещено соединять"
                         },
                         new
                         {
-                            Id = new Guid("d6d9607f-78a3-47ff-b57d-2d9331382a80"),
+                            Id = new Guid("1ecfcd80-88ba-47d4-8ba8-c19b6f261627"),
                             Example = "не могу вас с ним соединить прямо сейчас никак не могу вас соединить",
                             ObjectionClass = "Не могу соединить / Запрещено соединять"
                         },
                         new
                         {
-                            Id = new Guid("36a592a6-8fc2-43ee-ab24-49a7e64abdf8"),
+                            Id = new Guid("67e9afa3-c7d4-4421-aca4-98480c48a6ae"),
                             Example = "никак не могу просто никак нельзя вот так вот",
                             ObjectionClass = "Не могу соединить / Запрещено соединять"
                         },
                         new
                         {
-                            Id = new Guid("122ec5e0-3b7e-4be0-85fc-a55412493726"),
+                            Id = new Guid("b8677481-9f1f-4089-a876-eed98b4c6c00"),
                             Example = "нельзя соединять с руководством с начальством",
                             ObjectionClass = "Не могу соединить / Запрещено соединять"
                         },
                         new
                         {
-                            Id = new Guid("535b83ae-80a6-41c1-aad7-113a58316104"),
+                            Id = new Guid("2ea5860f-5a0d-41a2-bee7-2f68289c2b3e"),
                             Example = "мы не можем соединить вас с руководствам",
                             ObjectionClass = "Не могу соединить / Запрещено соединять"
                         },
                         new
                         {
-                            Id = new Guid("42d20eaf-9452-425b-ad80-fe6bf34b1aba"),
+                            Id = new Guid("0c902e7b-8952-41df-87f0-38261a66e728"),
                             Example = "не вижу интереса в этом продукте",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("054054f9-e4c7-4945-9cf7-c4ef79ab0b3e"),
+                            Id = new Guid("25035693-87b7-4b3b-9ddf-bd5e803d61f3"),
                             Example = "не интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("53d1790c-4130-4b49-ac7b-86e8c05c9031"),
+                            Id = new Guid("905a67a2-28e7-4fbb-86eb-1c72c49475ca"),
                             Example = "не вижу ничего интересного ",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("d9629f94-37aa-4da0-a2e4-4da6f89357d2"),
+                            Id = new Guid("8b4af970-e9a8-4071-9546-b15ab0fd5177"),
                             Example = "ваш продукт нам не интересен",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("4a2405a9-97b8-4d22-abc1-a32ab94df08f"),
+                            Id = new Guid("b708a9ba-eca6-4359-9764-86a048f54144"),
                             Example = "не интересно предложение в принципе",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("404b2293-f83b-4db9-89e3-ee18197f4153"),
+                            Id = new Guid("e8037334-ee3c-49fb-bb4b-ca4a33a51029"),
                             Example = "не понимаю, как это может быть интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("c3bf61f5-b91b-4919-8f0e-073951935411"),
+                            Id = new Guid("c844c997-9abb-414a-a0ce-54d19a3a1684"),
                             Example = "мне не интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("64001965-62bf-4d52-9693-5e0ec840e69f"),
+                            Id = new Guid("dce361b6-aa44-46e3-b859-701e7a6c52a5"),
                             Example = "нам не интересно это изучать",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("110189e2-c571-4720-8193-491095de612a"),
+                            Id = new Guid("7ba79127-671d-407e-8335-e5b6254882b6"),
                             Example = "мы не заинтересованы в этом",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("44556aef-1adb-43ff-b2b8-77f204791fc2"),
+                            Id = new Guid("e5af0f7b-fee6-4b68-9cc2-5141450b072d"),
                             Example = "простите, не заинтересовало",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("407c25f2-b4b3-4118-8fb9-4989c7fc1133"),
+                            Id = new Guid("6d199705-0d0d-4adc-94fe-19ba1b4a63a5"),
                             Example = "не заинтересован",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("12f26a3b-7198-400c-b043-84918867760e"),
+                            Id = new Guid("f61e66f6-be87-4ff4-8b77-41ac56949132"),
                             Example = "мы не видим в этом ничего интересного",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("9610dc52-f8b4-4fed-af6d-7c9d7147f7e0"),
+                            Id = new Guid("0b2c1e83-6fc9-4e11-bd09-67ce5cd64bf2"),
                             Example = "ничего интересного в этом не видим",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("f3afc0f8-f673-4755-b831-9361df4d9a23"),
+                            Id = new Guid("31c80e4d-53ab-4b14-9c02-f4bf9da8a1a4"),
                             Example = "не видим в этом ничего интересного",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("b1ce1e49-a852-4121-88c2-ca011c637fc6"),
+                            Id = new Guid("a8499e53-8989-4e46-b034-fc022656ed4c"),
                             Example = "ваше предложение просто не интересно",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("31d79cbc-eb38-4835-a65e-78ea71441305"),
+                            Id = new Guid("4e4952c3-697a-4e54-b511-c35d392b7f56"),
                             Example = "просто не интересно не нужно ",
                             ObjectionClass = "Нам это просто не интересно"
                         },
                         new
                         {
-                            Id = new Guid("01df29ef-0f21-48c5-ad79-b055f6127971"),
+                            Id = new Guid("2b6e3a5a-490c-432f-8b08-02c742f5799c"),
                             Example = "нам ничего не надо у нас все есть",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("493116b5-e33b-4cfa-b531-e1e072a31a75"),
+                            Id = new Guid("198b439e-6552-43d4-a35b-36e6ea4171f4"),
                             Example = "нам это не надо ",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("d7becc29-3284-41a3-b0b6-7fd88da9c875"),
+                            Id = new Guid("0493f7f0-09ee-4261-8eaa-cff81a7b7a74"),
                             Example = "нам ничего не надо",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("902fbafd-18d2-426a-b5c2-59e87d4515df"),
+                            Id = new Guid("1a0b92a4-e3ef-404b-8b9f-f4ce6cfc6918"),
                             Example = "нам ничего не нужно у нас все нормально",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("4c3e84d9-bca4-4b1a-9ba9-30bc4c6ad84c"),
+                            Id = new Guid("b6e7680f-cf3c-4912-b9ab-fc36cf1e6584"),
                             Example = "нам ничего не нужно у нас все есть",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("ba5050fc-1a4d-4f59-aa68-0f13ab31f312"),
+                            Id = new Guid("b078354d-ff24-440c-86e4-9a6b92b4b1af"),
                             Example = "не надо спасибо",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("e5bcac36-f4bf-4f8b-ad5b-453e5cacae6c"),
+                            Id = new Guid("2b78824e-eb4c-47b0-8d3b-d74a3acf9e01"),
                             Example = "ничего не надо",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("f11e181f-62dd-402a-b689-deb7300846fa"),
+                            Id = new Guid("8944c5e7-3c06-4a59-be93-105088bdebec"),
                             Example = "ничего не надо все и так хорошо",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("4c424c6d-f29b-4d27-a156-801a57153b3f"),
+                            Id = new Guid("0e6398ad-3237-41cd-9225-0ac1c5bc152e"),
                             Example = "все и так хорошо ничего не надо",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("04da8d2f-ff27-4797-8fd5-b8983e517c5f"),
+                            Id = new Guid("0b11512d-eb85-4b43-983b-8009bba6ecf9"),
                             Example = "мы ничего не хотим",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("74df87a1-b852-4450-ba9a-55f717fe7f5c"),
+                            Id = new Guid("9c113156-e366-4ca0-b910-b57947dcd909"),
                             Example = "не хотим ничего вообще все есть",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("f0c8a3f1-349a-43f0-99d3-c1343fef2961"),
+                            Id = new Guid("72d4c27c-f68c-4455-b834-6fbfc2139a82"),
                             Example = "у нас все есть ничего не надо",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("0b81a6ea-d264-40ce-bcee-2843e51f8613"),
+                            Id = new Guid("fb83d14a-d316-41af-bea0-de81d4a479c8"),
                             Example = "ничего нам не нужно",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("96a627c0-1aca-4099-ab2d-382c6f5ac6fd"),
+                            Id = new Guid("da4b7915-09b3-4fba-aa10-8d62ba24dd33"),
                             Example = "нет спасибо ничего не нужно",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("edb95fd6-e160-4759-9897-ff881e34ad04"),
+                            Id = new Guid("72a802b1-ad5a-4d39-91be-e4b490457a97"),
                             Example = "спасибо у нас все уже есть не надо ничего",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("613862b7-ddeb-468c-a397-4272697879c6"),
+                            Id = new Guid("52190ff0-3271-4024-9399-49cfdd3ad9cc"),
                             Example = "нет не надо ничего все есть",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("fa6df4a4-f85f-48d1-9c39-56c7bc2119ea"),
+                            Id = new Guid("f2e8390b-e6a3-4894-912d-7dff90d091da"),
                             Example = "у нас как-то все есть ничего не надо",
                             ObjectionClass = "Нам ничего не надо"
                         },
                         new
                         {
-                            Id = new Guid("81848381-c98b-4491-abf2-c675c60d3cbc"),
+                            Id = new Guid("a759bf06-e2f2-4315-b379-e806ca587ebc"),
                             Example = "у нас все есть",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("d887a8a7-9cf4-4178-bb81-3fb1a34e4f3e"),
+                            Id = new Guid("db9b1393-912e-41f7-958f-b9fe5f1feec4"),
                             Example = "у нас и так все есть",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("cc6a4dba-b3ba-487b-b71a-48b299f93f5c"),
+                            Id = new Guid("99116f7b-2b1c-4502-b355-d36f2124a7e0"),
                             Example = "у нас и так все нормально",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("86c4ec8d-48e2-425e-a348-6d0117bbe2bc"),
+                            Id = new Guid("f21e5e42-3255-451f-bd17-80ea852a77c3"),
                             Example = "у нас все ок",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("a4f5c3c2-0c6d-41e6-a467-56327b01715d"),
+                            Id = new Guid("98db47f3-0418-43be-93fb-5977c85f9122"),
                             Example = "все и так хорошо",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("fd830ab1-5e75-45e5-94f7-bd36bee89ac7"),
+                            Id = new Guid("37aa7633-330b-40e9-af70-f760204b6c1f"),
                             Example = "и так все есть все хорошо спасибо",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("73861816-785c-4fc6-819b-2957b30620bf"),
+                            Id = new Guid("153afc6a-bee6-4120-931c-a2a5713d1227"),
                             Example = "все хорошо ничего не надо",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("c7a9156e-5654-48dd-ad44-838508ba88f2"),
+                            Id = new Guid("14bac4f1-9f11-40c0-9f51-4309bfdf2b5d"),
                             Example = "все уже установлено все на месте",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("3d4b7f21-59f0-4e75-a9ad-b49c2aec066f"),
+                            Id = new Guid("c23793ab-b93a-4a2a-a6c4-7cab557a9b6d"),
                             Example = "все есть спасибо все ок не надо ничего",
                             ObjectionClass = "У нас все есть"
                         },
                         new
                         {
-                            Id = new Guid("25cb8524-94a0-477b-927b-10c036a9d0dc"),
+                            Id = new Guid("a25c039d-31c9-4647-83ec-2c6b4dad3a71"),
                             Example = "слишком дорого для нас",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("9f375162-4ea2-40e3-8c1a-88cad410f877"),
+                            Id = new Guid("cad30392-db97-41af-8f11-76d7b7445190"),
                             Example = "накладно для нас дорого",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("c3a80df1-d3f5-43c9-852d-ed12e3927971"),
+                            Id = new Guid("940fe834-e819-409b-9c79-9637e9063696"),
                             Example = "не потянем по цене",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("aebc884e-bd45-44d9-966a-8a78aec2c3b3"),
+                            Id = new Guid("20e2e370-7145-4931-8030-61702d76a70c"),
                             Example = "цена не устраивает дорого слишком",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("3bc594f8-0eea-466c-b470-e70067c723b2"),
+                            Id = new Guid("5bafb3fd-29c6-48aa-9dcc-69c03b18d741"),
                             Example = "слишком большие расходы",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("0c69ef2c-1dc3-4cd4-a13b-fa8200ee0b25"),
+                            Id = new Guid("dadc11cd-e153-4e73-b7b4-c66ce35acf1c"),
                             Example = "не устраивает цена",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("5cd6ad56-989b-49d7-ada0-b39eb359e753"),
+                            Id = new Guid("58e90adf-586c-4264-ae02-56af811db806"),
                             Example = "у нас нет таких денег не можем позволить себе",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("dc61b217-7da6-46bc-a2ad-8e902f2ae067"),
+                            Id = new Guid("eaf9dfa9-d7e7-490f-a6ff-5a3951b6608b"),
                             Example = "слишком накладно ",
                             ObjectionClass = "Дорого"
                         },
                         new
                         {
-                            Id = new Guid("22b19d1e-6f35-40b5-94d0-e22805375531"),
+                            Id = new Guid("43763af4-7b8a-4644-a0cf-c762a1e1ac69"),
                             Example = "для нас это сейчас не нужно сейчас не актуально",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("5661cf25-4bc0-41cd-99e5-a8b2cfdc6714"),
+                            Id = new Guid("8e4dfa7c-1409-46ec-bbe8-cce17f20ba9e"),
                             Example = "сейчас не подходит ",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("33e82c6d-71cf-40a1-b2ac-21b99e99e006"),
+                            Id = new Guid("2beedea0-88b1-4dac-bdb0-7bab1f355261"),
                             Example = "сейчас другие проблемы у нас",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("1fbd462e-d4bd-481a-a5f2-5ea12aa8cb03"),
+                            Id = new Guid("687909e4-7082-4b76-8fa4-0d42650eada5"),
                             Example = "сейчас другие задачи сейчас не в рассмотрении",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("febe2459-6caa-40a9-a243-c23513323578"),
+                            Id = new Guid("b8fe7279-d89d-4630-be30-b0ab57f3ecea"),
                             Example = "в данный момент не актуально",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("2efd68bf-f668-4cb1-9815-9925bad23f14"),
+                            Id = new Guid("f1c1dd50-9b3b-498e-93fa-ce2967bf593c"),
                             Example = "сейчас не актуально",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("a5754d18-ffda-46f4-a0bc-be225486cdac"),
+                            Id = new Guid("9fba6751-75d2-4b06-ba81-de9de9162829"),
                             Example = "не актуально в данный момент",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("6bbc4365-7641-494b-aa45-6338d42ee02a"),
+                            Id = new Guid("75fa3913-a9d8-4ad1-b318-e4a8cdfd5512"),
                             Example = "не нужно сейчас никак не купим в данный момент",
                             ObjectionClass = "Сейчас не актуально"
                         },
                         new
                         {
-                            Id = new Guid("88d7b811-c2cd-41bc-9323-5064d77ee4ec"),
+                            Id = new Guid("e568ed06-c12f-47bb-bcfc-b5cb00a7bc7b"),
                             Example = "мне нужно подумать я подумаю ",
                             ObjectionClass = "Я подумаю/мне нужно подумать"
                         },
                         new
                         {
-                            Id = new Guid("1eb36cae-0aca-45bd-bd45-c20f0869ca22"),
+                            Id = new Guid("eebd98bb-222a-45d0-8574-3f568a8730c7"),
                             Example = "отвечу позднее потом отвечу не могу сейчас ответить",
                             ObjectionClass = "Я подумаю/мне нужно подумать"
                         },
                         new
                         {
-                            Id = new Guid("93998a76-42e4-41ed-beb2-6e5086108ef5"),
+                            Id = new Guid("a22183f0-8309-42f9-9dcf-a3f1d4d570e1"),
                             Example = "отвечу потом ",
                             ObjectionClass = "Я подумаю/мне нужно подумать"
                         },
                         new
                         {
-                            Id = new Guid("9a8a55c1-b0d4-414d-b816-2363f7d0fbd7"),
+                            Id = new Guid("a2c6277c-f9c2-48d9-b177-33bfdbb1d4bc"),
                             Example = "подумаю и отвечу нужно подумать нужно обмозговать",
                             ObjectionClass = "Я подумаю/мне нужно подумать"
                         },
                         new
                         {
-                            Id = new Guid("d92e0b90-940f-4d8e-917d-fe1fb8cf96e1"),
+                            Id = new Guid("a719aba3-fc40-45a6-8872-9d9f805d7810"),
                             Example = "я подумаю нужно покумекать посообразить",
                             ObjectionClass = "Я подумаю/мне нужно подумать"
                         },
                         new
                         {
-                            Id = new Guid("69dd3b10-d8c2-4ebf-9417-b61bceb17efb"),
+                            Id = new Guid("0d8fef24-1b63-411f-8b82-321b18dd417f"),
                             Example = "подумаю и отвечу потом",
                             ObjectionClass = "Я подумаю/мне нужно подумать"
                         },
                         new
                         {
-                            Id = new Guid("7d9aaf8e-15bc-4b16-8336-c7a3b45e68c9"),
+                            Id = new Guid("aef73d85-1b6f-4cdc-9dc4-a21581dd7e33"),
                             Example = "обдумаю и отвечу обдумать думать подумать надо",
                             ObjectionClass = "Я подумаю/мне нужно подумать"
                         },
                         new
                         {
-                            Id = new Guid("b74f2a25-7504-42b8-a90e-55ef6e5e76d7"),
+                            Id = new Guid("33415de8-6835-4f18-aea2-2a0c8c090e9d"),
                             Example = "пришлите подробную информацию",
                             ObjectionClass = "Пришлите КП/подробные материалы"
                         },
                         new
                         {
-                            Id = new Guid("06a03390-eac1-412b-bede-ce30ba03c6e5"),
+                            Id = new Guid("1e0280de-0d18-48b6-b281-8e1010d2e54f"),
                             Example = "подробные материалы вышлите инфо на почту",
                             ObjectionClass = "Пришлите КП/подробные материалы"
                         },
                         new
                         {
-                            Id = new Guid("17da8d6d-1c9e-40f8-8f7b-356b1b816f43"),
+                            Id = new Guid("07e0439f-ff36-44c4-98b4-b9d6c8a09e7c"),
                             Example = "вышлите кп на почту в письме информацию ",
                             ObjectionClass = "Пришлите КП/подробные материалы"
                         },
                         new
                         {
-                            Id = new Guid("ca1bc8e1-3c6a-49be-b08a-ebfd25ed2f03"),
+                            Id = new Guid("b9b4076b-e56b-44d9-9f59-17bcde92a498"),
                             Example = "нужны подробные материалы дополнительные ",
                             ObjectionClass = "Пришлите КП/подробные материалы"
                         },
                         new
                         {
-                            Id = new Guid("357d4728-b08f-454e-8bf3-d553a459808c"),
+                            Id = new Guid("692f2b1e-5a6b-4526-85b2-6c103012b786"),
                             Example = "прошу вас выслать подробные материалы пришлите кп",
                             ObjectionClass = "Пришлите КП/подробные материалы"
                         },
                         new
                         {
-                            Id = new Guid("f2cf6c8f-3f79-4b05-985b-8b1795c5721f"),
+                            Id = new Guid("c845a565-6b97-41cf-b3c3-4b4311739038"),
                             Example = "у нас нет столько денег на проект нет денег",
                             ObjectionClass = "Нет денег"
                         },
                         new
                         {
-                            Id = new Guid("db3f851f-38a2-4a2c-8290-cc60d1a4dffb"),
+                            Id = new Guid("e7d9232c-6a3d-4624-8ddb-680db2b325fa"),
                             Example = "высокая стоимость не потянем нет денег",
                             ObjectionClass = "Нет денег"
                         },
                         new
                         {
-                            Id = new Guid("9786ddf7-0265-411d-8575-d442feaa7569"),
+                            Id = new Guid("7e739fb9-50ae-451f-b7c5-ff2389bc6fc2"),
                             Example = "нет денег слишком дорого",
                             ObjectionClass = "Нет денег"
                         },
                         new
                         {
-                            Id = new Guid("aa9cd5f4-1e0e-4b67-b6a3-b86a49f229dc"),
+                            Id = new Guid("35b2523c-8a37-4ad7-8333-713bdbc4c715"),
                             Example = "оплачу позднее не готов оплатить сейчас думаю подождет",
                             ObjectionClass = "Отказ оплачивать счет"
                         },
                         new
                         {
-                            Id = new Guid("27078c85-b3dd-4a00-bbd1-aa412e9a091e"),
+                            Id = new Guid("05df3801-a68e-4528-a7ba-c35bfd6222e8"),
                             Example = "отказ оплачивать счет отказываюсь оплачивать счет пока",
                             ObjectionClass = "Отказ оплачивать счет"
                         },
                         new
                         {
-                            Id = new Guid("1f1e0e22-2795-4f01-b6f2-0d7c45ae29ac"),
+                            Id = new Guid("9af7a01f-b404-4fd1-94b5-93aa9cae1f54"),
                             Example = "я отказываюсь оплачивать потому что",
                             ObjectionClass = "Отказ оплачивать счет"
                         },
                         new
                         {
-                            Id = new Guid("d2596608-c285-4e8f-9002-59b959bc30a3"),
+                            Id = new Guid("d3c26dbb-27b3-415d-8cb9-c9517fe1df67"),
                             Example = "оплачу потом позднее не готов",
                             ObjectionClass = "Отказ оплачивать счет"
                         },
                         new
                         {
-                            Id = new Guid("7bf1a337-55ea-423c-9c00-5ee41b847ec5"),
+                            Id = new Guid("d9da56ad-27ed-489e-8ae8-b12ce8968b1a"),
                             Example = "работали с вами, не понравилось",
                             ObjectionClass = "Работали с вами, не понравилось"
                         },
                         new
                         {
-                            Id = new Guid("5b918af3-4df9-4778-94b2-f2d517e982db"),
+                            Id = new Guid("bf761219-d484-4b83-a802-d0968f8ff05c"),
                             Example = "с вами работали раньше ранее не понравилось в прошлом уже было не хотим возвращаться",
                             ObjectionClass = "Работали с вами, не понравилось"
                         });
@@ -1285,518 +1287,518 @@ namespace ClientBarometer.Migrator.Migrations.ClientBarometerDb
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7063c827-5545-410d-81ad-1d7cc470ff62"),
+                            Id = new Guid("a6a742d1-a25d-462c-9235-8f0ec906c7c1"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Положительный опыт других",
                             Text = "У некоторых наших клиентов поначалу был подобный настрой, но сейчас они очень довольны сотрудничеством с нами!"
                         },
                         new
                         {
-                            Id = new Guid("1aa47c4d-679e-488f-b1c5-7d46ef41ba5e"),
+                            Id = new Guid("0b4ccc5b-dc30-4a78-a96d-fd37de86d933"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Напоминание о выгоде",
                             Text = "А разве новое может быть неинтересным? Вы просто еще не знаете, какую выгоду можете приобрести! Привычное и обыденное - вот к чему действительно пропадает интерес! Уверен, руководство всегда радо новому предложению"
                         },
                         new
                         {
-                            Id = new Guid("1b94bb4d-616c-43c3-a553-3a0491c6df2b"),
+                            Id = new Guid("f2128b7e-5568-44e7-9de9-bda140453c4e"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Конкурентное преимущество «КП»",
                             Text = "А вдруг мы те самые!?)Те, которые все-таки интересны?! (шутливая форма)Если неинтересно сейчас, это не значит, что не будет интересно никогда. Прочитав наше КП и услышав мои аргументы, руководитель изменит свое мнение !"
                         },
                         new
                         {
-                            Id = new Guid("045820ab-8a43-4f52-9daf-802f8083faf9"),
+                            Id = new Guid("b6a55178-9e52-46d0-a4b0-8b5a9eabecff"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Эмоциональное давление",
                             Text = "Это официальная точка зрения Вашего руководства?"
                         },
                         new
                         {
-                            Id = new Guid("667cdcc3-d945-44ab-9336-faf0e87f8ade"),
+                            Id = new Guid("03b429e6-e6b9-414f-b000-1226092c4d54"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Сопоставление интересов",
                             Text = "Если неинтересно Вам, означает ли это, что и руководителю будет неинтересно ? Соедините меня с ним!"
                         },
                         new
                         {
-                            Id = new Guid("a9788c89-1256-410d-b3c1-2613fc1fc5a2"),
+                            Id = new Guid("073ee6f8-3fb0-457d-8b7a-19731f9b6735"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Уточнение ЛПР",
                             Text = "Скажите, пожалуйста, мое предложение не заинтересовало лично ВАС или вашего руководителя? Я всегда готов выслушать предложения и замечания."
                         },
                         new
                         {
-                            Id = new Guid("904df985-0b90-498c-9688-70669478530b"),
+                            Id = new Guid("94ab8e05-e01e-4a5c-9ee7-6b9f216b2c5a"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Два лучше одного",
                             Text = "Мы не предлагаем Вам отказываться от услуг получаемых сейчас, а даем возможность сравнить и выбрать. Имея второго надежного партнера, ваше руководство только выиграет."
                         },
                         new
                         {
-                            Id = new Guid("c43875a5-ce15-46f8-9672-e051960f32ec"),
+                            Id = new Guid("1e083c15-c90e-4d3f-a622-1bc85cb88e4b"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Сопоставление условий",
                             Text = "Поставщик - это тот, кто предлагает выгодные условия! Дать возможность вашему руководству сравнить наши условия и условия нынешнего поставщика будет, по меньшей мере, справедливо (правильно)!"
                         },
                         new
                         {
-                            Id = new Guid("685658f7-a97a-4f8d-b0b2-50da9df97f42"),
+                            Id = new Guid("2e510f68-6887-4754-b295-58357f127365"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Привлекательность предложения",
                             Text = "Вряд ли кто-то откажется от новых интересных и привлекательных предложений. Ведь так? Спросите у Вашего руководителя, что он думает по этому поводу!"
                         },
                         new
                         {
-                            Id = new Guid("db675a71-5349-46cb-846c-4143d7def461"),
+                            Id = new Guid("330117dc-463b-4310-ac98-0c0cb6544199"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Смена роли",
                             Text = "Представьте: Вы – руководитель компании. И Вы узнаете, что упустили отличную возможность сотрудничества по «инициативе» секретаря не переключать! Как бы Вы среагировали?"
                         },
                         new
                         {
-                            Id = new Guid("11a62e14-2a6e-49e0-853c-5b279c983250"),
+                            Id = new Guid("f92afd0b-9e41-423c-9b8c-7dd50547e15f"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Лесть (шутка)",
                             Text = "Но ведь ваше руководство потом Вам выпишет премию, когда поймет, с каким новым выгодным партнером вы его связали"
                         },
                         new
                         {
-                            Id = new Guid("1d6ea5c2-5d09-4fea-9387-2d462a659642"),
+                            Id = new Guid("8bc7dafd-e8e8-4cf4-9fc2-73fe69ded0c7"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Уникальность",
                             Text = "Замечательно. У нас есть предложение, которого наверняка нет у ваших поставщиков. И именно это я и хочу обсудить с вашим руководством! Соедините!"
                         },
                         new
                         {
-                            Id = new Guid("0229372a-c58b-4298-92a8-03b71de16a7d"),
+                            Id = new Guid("273d88bd-ada1-40bf-ad25-24e121d71484"),
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть",
                             Processing = "УточнениеВозражения",
                             Text = "Вы уже все купили или у Вас израсходован бюджет? Вы имеете в виду, что работаете уже с другими или сейчас у вас не сезон? Не надо на данный момент или работаете по более низким ценам?"
                         },
                         new
                         {
-                            Id = new Guid("f80a931e-efeb-45e8-9d4b-8dcf832966bb"),
+                            Id = new Guid("c42dc6ab-49af-4b95-b847-2622b2fb6266"),
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть",
                             Processing = "Бумеранг",
                             Text = "Именно поэтому я и хотел задать пару специфических вопросов вашему руководителю. Чтобы он сам решил, надо ему это или нет"
                         },
                         new
                         {
-                            Id = new Guid("7667e889-7c5d-4f31-a375-cbcb5d542ce9"),
+                            Id = new Guid("e0901e51-1f71-4ed8-90e4-c796824c9806"),
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть",
                             Processing = "Чем больше есть, тем больше хочется",
                             Text = "Если у человека все есть, значит ли это, что ему ничего и не понадобится? Мы можем стать отличным партнером для вашей компании! Соедините со специалистом!"
                         },
                         new
                         {
-                            Id = new Guid("172b60d4-b8e8-4b74-97dc-ee546b349de5"),
+                            Id = new Guid("138c4915-e694-4d98-afbb-43faba069735"),
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть",
                             Processing = "Забота ЛПР о компании: выбрать лучшее",
                             Text = "Уверен, что \"ЛПР\" выбирает только лучшее для своей компании.А как он сможет выбрать лучшее, если у него не будет нашего предложения.Соедините! Не лишайте руководство права выбора!"
                         },
                         new
                         {
-                            Id = new Guid("0e0a73af-4e5a-4611-a58b-94b1832a5441"),
+                            Id = new Guid("7d41d231-1b72-45d8-b027-be774f166909"),
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть",
                             Processing = "Ссылка на авторитетную фирму",
                             Text = "Один из наших крупнейших клиентов на вашем рынке позвонила уже на следующий день после того, как ответила, что им ничего не надо.Может быть, \"Имя ЛПР\" уже держит трубку телефона и ищет именно наш номер.Облегчите ему задачу, соедините, пожалуйста"
                         },
                         new
                         {
-                            Id = new Guid("bb5f8077-99ea-47b0-ba64-a6fb419c04d6"),
+                            Id = new Guid("66207b49-62b0-4a4c-84e6-9aabb2864eee"),
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть",
                             Processing = "«Вопросы - давление»",
                             Text = "Т.е. Вы уже знакомы с нашими услугами/товаром, условиями сотрудничества, ценами, акциями? И у Вашего руководства есть вся необходимая информация?"
                         },
                         new
                         {
-                            Id = new Guid("de33d5b8-384b-4edb-92f5-865fdf3c2d34"),
+                            Id = new Guid("7ba0da9a-e6a4-402c-8f08-9583d619f14a"),
                             ObjectionClass = "Нам ничего не нужно/ у нас все есть",
                             Processing = "Кто занимается этим вопросом?",
                             Text = "Правильно ли я понимаю, что именно Вы занимаетесь этими вопросами?"
                         },
                         new
                         {
-                            Id = new Guid("ca29af2f-e80f-4772-8889-1738defb5ee3"),
+                            Id = new Guid("0b6d6483-3f92-4954-a229-c6c06f1d61bc"),
                             ObjectionClass = "Пришлите информацию (скайп, КП, эл.почту)",
                             Processing = "Личный разговор лучше, чем предложение на бумаге",
                             Text = "Пять минут личного разговора даст намного больше информации, чем 10 листов предложения. Тем более, предложение по факсу /эл.почте не сможет ответить на возникшие вопросы. Соедините, пожалуйста!"
                         },
                         new
                         {
-                            Id = new Guid("5946bf59-6847-4dd2-885a-6126cc9b5b7c"),
+                            Id = new Guid("b518e127-51e6-4ffd-a959-ff9835dfe65f"),
                             ObjectionClass = "Пришлите информацию (скайп, КП, эл.почту)",
                             Processing = "Уточнение деталей",
                             Text = "Так я и прошу меня соединить, чтобы уточнить детали! А уже на основании разговора, я смогу выслать предложение, которое подходит под запросы вашей компании. Соедините, пожалуйста!"
                         },
                         new
                         {
-                            Id = new Guid("5aa96aa7-ddad-4c9b-8a93-273c7e59b77c"),
+                            Id = new Guid("02a95847-a105-48ed-8e04-a46c79517d1c"),
                             ObjectionClass = "Пришлите информацию (скайп, КП, эл.почту)",
                             Processing = "Упор на разговор",
                             Text = "Да, я конечно отправлю предложение по факсу, но разве это мешает нам переговорить в течение двух минут?! Соедините, пожалуйста!"
                         },
                         new
                         {
-                            Id = new Guid("8cbde3d4-b904-46c3-94a6-e25eb65751f1"),
+                            Id = new Guid("473e6e92-913c-4bc3-9f18-5f91f6c089e0"),
                             ObjectionClass = "Пришлите информацию (скайп, КП, эл.почту)",
                             Processing = "Сперва задача, затем предложение!",
                             Text = "Большинство руководителей любят устно поставить задачу партнеру, а уж потом рассматривать письменное предложение.Наверняка, \"Имя ЛПР\" один из них! Соедините, я оговорю эти моменты!"
                         },
                         new
                         {
-                            Id = new Guid("4d181f5c-0e10-4f7f-be4d-e151a82e44b0"),
+                            Id = new Guid("95ce1a8e-cf80-44c2-9241-c09198e94cc3"),
                             ObjectionClass = "Пришлите информацию (скайп, КП, эл.почту)",
                             Processing = "вопрос престижа",
                             Text = "Мы не рассылаем спам. Мы – серьезная компания, с именем и репутацией. Чтобы предложить вам наши услуги, я должна сначала переговорить с вашим руководителем. Переключите!"
                         },
                         new
                         {
-                            Id = new Guid("cce5c5b8-3e49-4101-8c2d-4f6a7a145643"),
+                            Id = new Guid("d332211d-71b5-4587-bdff-45b6d5b9e7b1"),
                             ObjectionClass = "Пришлите информацию (скайп, КП, эл.почту)",
                             Processing = "экономия времени",
                             Text = "У нас большое КП, у вашего руководителя уйдет несколько часов на то, чтобы в нем разобраться. Я хочу сэкономить время вашего руководства, наш разговор займет не более 5 минут. Переключите!"
                         },
                         new
                         {
-                            Id = new Guid("5ff9a2ce-2ea2-4c5f-b426-555867db89b6"),
+                            Id = new Guid("557d330f-2e33-4754-99b0-36cb4c855b0a"),
                             ObjectionClass = "Сам перезвонит",
                             Processing = "Занятость ЛПР",
                             Text = "Наверняка у «Имя ЛПР» работы невпроворот, как бы ни затерялось на столе. Тем более, что я могу не учесть тонкостей, мне нужно посоветоваться с ним. Когда мне лучше перезвонить чтобы застать его ?"
                         },
                         new
                         {
-                            Id = new Guid("b45f1252-2ca8-4b24-bc20-0ab5a7810ced"),
+                            Id = new Guid("f5d8f8d4-e8ef-4b7c-81b9-1ffe1ead46f8"),
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался",
                             Processing = "Генеральный заведует всем!",
                             Text = "Если есть выгодное дело, всегда найдется заинтересованный человек. Возможно, следует связать с генеральным директором? Чаще всего, он заведует всем. Соедините, будьте добры!"
                         },
                         new
                         {
-                            Id = new Guid("72ddaf26-bcb4-4eb5-8da3-68540d53f67d"),
+                            Id = new Guid("d72bc78c-f637-48cd-9846-0250c1339b48"),
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался",
                             Processing = "Упоминание конкурентов",
                             Text = "Интересно. А у ваших конкурентов есть человек, который этим занимается! Соедините с руководством, я уверен, его может заинтересовать этот вопрос!"
                         },
                         new
                         {
-                            Id = new Guid("1bdba672-27ce-43c2-ac74-67ad0cb6789c"),
+                            Id = new Guid("7ffe1502-174d-41b8-ad73-479255a290b2"),
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался",
                             Processing = "Вопросом занимается «….» отдел",
                             Text = "Обычно в компаниях этим вопросом занимаются сотрудники « название отдела» отдела. Они точно знают , нуждается ли компания в наших услугах. Будьте добры, соединить с ними"
                         },
                         new
                         {
-                            Id = new Guid("cc0cab79-7864-4474-8785-4bd32b822e0d"),
+                            Id = new Guid("66197480-e6cc-471d-aeb1-6c136823dcb6"),
                             ObjectionClass = "Я этим не занимаюсь / У нас нет человека, кто бы этим занимался",
                             Processing = "УточнениеВозражения",
                             Text = "Обычно такими делами занимается генеральный директор. Может быть, вы имеете в виду, что он занят? Тогда я могу перезвонить в другое удобное для него время"
                         },
                         new
                         {
-                            Id = new Guid("bdfad079-fda1-452e-9ea0-73c50e85ee45"),
+                            Id = new Guid("704227d4-e036-4f37-a868-2e952005ac78"),
                             ObjectionClass = "Не могу соединить / Запрещено соединять",
                             Processing = "мы не звоним по пустякам",
                             Text = "Наверняка вам запрещено соединять с теми, кто звонит по пустякам. Мы же хотим сэкономить вашей компании 5 миллионов рублей в месяц. Вряд ли ваш руководитель захочет упускать такую выгодную сделку. Соедините с ним, пожалуйста!"
                         },
                         new
                         {
-                            Id = new Guid("386d6844-d1d2-4b4b-8af2-12a8473e619f"),
+                            Id = new Guid("577352a7-0e17-41e3-bb3e-0e2b5ef9559c"),
                             ObjectionClass = "Не могу соединить / Запрещено соединять",
                             Processing = "войти в положение",
                             Text = "Я Вас прекрасно понимаю, я сама завишу от решения руководителя! Но разговор займет всего пару минут, и он поможет вашей компании получить дополнительную прибыль. Соедините!"
                         },
                         new
                         {
-                            Id = new Guid("d9177767-1d7a-443a-a0ac-f0c46fce1c6c"),
+                            Id = new Guid("b59684e4-1aa9-40f5-866f-0501497855a5"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Какие условия интересны?",
                             Text = "\"Имя ЛПР\", скажите, а на каких условиях Вам было бы интересно сотрудничать с нашей компанией ? («Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре / услугах, ответить на вопросы и обсудить возможные условия сотрудничества)"
                         },
                         new
                         {
-                            Id = new Guid("d95a1856-968a-4aa3-acb1-474ea8a464a8"),
+                            Id = new Guid("103711c4-0973-4201-b17f-8e30877e0fe1"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Положительный опыт других",
                             Text = "\"Имя ЛПР\", я понимаю, сложно разглядеть интерес и выгоду по телефону! У некоторых наших клиентов(перечислить значимых) поначалу был подобный настрой, но сейчас они очень довольны сотрудничеством с нами!(\"Имя ЛПР\", предлагаю встретиться в удобное для нас время.Это позволит Вам ознакомиться со всеми достоинствами и преимуществами нашего товара / услуг и при этом сэкономит Ваше время.)"
                         },
                         new
                         {
-                            Id = new Guid("1dd76b90-1790-40d8-b2a4-73ed43a77aa9"),
+                            Id = new Guid("457ba655-0c1c-4f72-ba81-c3d0bddb015c"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "УточнениеВозражения",
                             Text = "\"Имя ЛПР\", Вам неинтересен товар / услуги или работа с нами ? (отвечает)"
                         },
                         new
                         {
-                            Id = new Guid("2dee2feb-7a03-4763-9104-0031b8049832"),
+                            Id = new Guid("2409f8d3-9f5f-47a8-be96-5079438f9c47"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Моя цель-…..! Ваша задача-……!",
                             Text = "\"Имя ЛПР\", моя цель – предоставить всю необходимую Вам информацию о наших услугах / товаре, а Ваша– просто с ней ознакомиться! \"Имя ЛПР\", предлагаю встретиться.Это позволит Вам ознакомиться со всеми достоинствами и преимуществами нашего товара / услуг и при этом сэкономит Ваше время.)"
                         },
                         new
                         {
-                            Id = new Guid("8f84c5d2-ffcc-4de7-a30e-ac277421200f"),
+                            Id = new Guid("bab9a867-f5e0-467f-b1de-1b55d8a2b92f"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Встреча даст минимум информацию, максимум партнерство",
                             Text = "\"Имя ЛПР\", предлагаю встретиться в удобное для Вас время.Эта встреча вас ни к чему не обязывает.Минимум вы получите дополнительную информацию о нашем товаре / услуге, максимум - совместное партнерство"
                         },
                         new
                         {
-                            Id = new Guid("88918156-e6f6-46da-b5eb-8784a7c743d2"),
+                            Id = new Guid("6c0ed21c-16fe-498d-91da-3a7a19c79770"),
                             ObjectionClass = "Нам это просто не интересно",
                             Processing = "Выявление интереса",
                             Text = "\"Имя ЛПР\", хорошо, что ваша компания является самодостаточной.Давайте же посмотрим вместе, что бы Вас смогло заинтересовать. («Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре / услугах, ответить на вопросы и обсудить возможные условия сотрудничества)"
                         },
                         new
                         {
-                            Id = new Guid("40314bd0-cfee-4044-993a-2c29ac84e458"),
+                            Id = new Guid("d78fe258-7c21-44f3-8413-cc7e656b1d0f"),
                             ObjectionClass = "Нам ничего не надо",
                             Processing = "Уступки и комментарии",
                             Text = "\"Имя ЛПР\", я не настаиваю на сиюминутном сотрудничестве! Для начала, я предлагаю рассмотреть наше предложение и готов выслушать Ваши комментарии. «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре / услугах, ответить на вопросы и обсудить возможные условия сотрудничества"
                         },
                         new
                         {
-                            Id = new Guid("b87fb99c-2dbc-4a64-8b4f-66dd75cf06f0"),
+                            Id = new Guid("a23b853a-c42f-414e-bdc4-fdfc43545bf6"),
                             ObjectionClass = "Нам ничего не надо",
                             Processing = "Упор на встречу",
                             Text = "\"Имя ЛПР\", именно встреча поможет Вам увидеть все достоинства и преимущества нашего товара / услуг, и при этом сэкономит Ваше время.Во всяком случае, Вы ничем не рискуете!"
                         },
                         new
                         {
-                            Id = new Guid("d7a111ee-9cbb-43ae-8c16-4e67551059f3"),
+                            Id = new Guid("3c912065-1288-406f-bc08-e066824522db"),
                             ObjectionClass = "Нам ничего не надо",
                             Processing = "Дополнительная информация- повод встретиться!",
                             Text = "Тем более у нас есть повод встретиться! Дополнительная информация еще никому не навредила, даже наоборот! Поэтому я с удовольствием согласен поделиться ею. \"Имя ЛПР\", предлагаю встретиться.Это позволит Вам ознакомиться со всеми достоинствами и преимуществами нашего товара / услуг и при этом сэкономит Ваше время.)"
                         },
                         new
                         {
-                            Id = new Guid("34899439-67f3-4c31-93d4-2641dcf83424"),
+                            Id = new Guid("fea1ac18-76a2-48bd-9daf-9659d485554d"),
                             ObjectionClass = "Нам ничего не надо",
                             Processing = "Различные формы сотрудничества",
                             Text = "\"Имя ЛПР\", давайте посмотрим на это с другой точки: в нашей компании практикуются различные формы сотрудничества.Мы могли бы встретиться и обсудить их.Это позволит Вам ознакомиться со всеми достоинствами и преимуществами нашего товара / услуг и при этом сэкономит Ваше время"
                         },
                         new
                         {
-                            Id = new Guid("1218ea29-53a7-4d5b-b85b-b4732d568db1"),
+                            Id = new Guid("cfcbaa1c-f485-4446-a026-173b5f9baeff"),
                             ObjectionClass = "Нам ничего не надо",
                             Processing = "Не попробуешь, не оценишь",
                             Text = "\"Имя ЛПР\", прежде чем отказаться, предлагаю Вам встретиться с нашим специалистом и получить исчерпывающую информацию!, Согласитесь, нельзя оценить то, чего не знаешь и не пробовал! «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре / услугах, ответить на вопросы и обсудить возможные условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("4757f28a-8133-4fc2-96ff-f7712cee02f7"),
+                            Id = new Guid("eb426bb9-9323-4138-8f8e-933cbf77fc9e"),
                             ObjectionClass = "Нам ничего не надо",
                             Processing = "Положительный опыт других",
                             Text = "\"Имя ЛПР\", 60 % компаний, с которыми мы сотрудничаем, начинали разговор именно с этогоВозражения.И это понятно.Вы стабильная компания с устоявшимися контактами.Но разве новое — это всегда ненужное ? «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре / услугах, ответить на вопросы и обсудить возможные условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("5f3b90f1-7042-4655-9907-825dfd75244f"),
+                            Id = new Guid("abe491b3-2f57-42b9-848d-348a8bbb6bb0"),
                             ObjectionClass = "У нас все есть",
                             Processing = "Цель – альтернатива",
                             Text = "Мы не пытаемся заменить Ваших партнеров. Наша цель – предложить Вам альтернативу, которая позволит не зависеть от политики одного поставщика! Плюс ко всему, сотрудничая с нами , Вы получаете … (перечислить преимущества). «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре/услугах, ответить на вопросы и обсудить возможные условия сотрудничества"
                         },
                         new
                         {
-                            Id = new Guid("a59db7e4-37c8-4472-9951-a6982d754a9f"),
+                            Id = new Guid("d6c368a5-b64f-4680-a9cb-0b60cc061d0b"),
                             ObjectionClass = "У нас все есть",
                             Processing = "Подстраховка",
                             Text = "«Имя ЛПР», имея запасной вариант, Вы будете застрахованы! И при этом у Вас будет контроль над ситуацией. «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре/услугах, ответить на вопросы и обсудить возможные условия сотрудничества"
                         },
                         new
                         {
-                            Id = new Guid("a167dd7c-8eac-40b6-9318-4581a8339b46"),
+                            Id = new Guid("5f8c3f81-1507-44a8-9465-956e28342389"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Иметь выбор – это правильно",
                             Text = "Проверенный партнер, это хорошо. Но, согласитесь, иметь выбор – это правильно! Кроме того, мы уверены, что наша продукция, ее качество и условия совместной деятельности не оставят Вас равнодушными, также , как не оставили равнодушными (перечислить крупных партнеров). «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре/услугах, ответить на вопросы и обсудить возможные условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("a70777db-53fe-4fd1-96bf-7a17e746a9b2"),
+                            Id = new Guid("ba615877-72d4-42f2-9620-4701deda93ee"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Всякое может случиться",
                             Text = "Вы работаете только с одним поставщиком?! А вдруг у него что-нибудь случится? И что Вы будете делать тогда? Имея несколько поставщиков на один товар/продукцию, Вы сможете диктовать им свои требования и выбирать лучшие условия. «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре/услугах, ответить на вопросы и обсудить возможные условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("3530c7b2-7403-49e3-8021-8534469a934c"),
+                            Id = new Guid("964bf266-de1c-4dbf-a7d9-e084dd271a59"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Хорошая осведомленность клиента",
                             Text = "Как раз потому, что сейчас Вы хорошо знаете своего поставщика, Вам будет очень легко увидеть наши отличительные преимущества. Работая с двумя поставщиками, вы пользуетесь услугами профессионалов, двух работающих на Вас компаний! «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре/услугах, ответить на вопросы и обсудить возможные условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("9118b4b3-3ab9-465c-b1c7-fcdf8e5732ce"),
+                            Id = new Guid("2a97d2c4-87c2-4cb0-8d28-b7e5ecbcea00"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "Больше поставщиков – больше выбор",
                             Text = "\"Имя ЛПР\", опыт показывает, что 70 % компаний вашего уровня работают с двумя - тремя поставщиками.Это дает возможность большего выбора, снижает риски и позволяет играть условиями — это выгодно. «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре / услугах, ответить на вопросы и обсудить возможные условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("2149e19b-42d9-479d-b68d-4027c7c611aa"),
+                            Id = new Guid("76b72499-e185-4a71-aa8c-eb54f0542f2e"),
                             ObjectionClass = "Мы работаем с другими",
                             Processing = "УточнениеВозражения!",
                             Text = "Вы имеете в виду, что недавно произвели очередную крупную закупку? Или дело в том, что у вас сейчас нет достаточной информации о нас, чтобы увидеть наши плюсы по отношению к другим поставщикам? «Имя ЛПР», наш специалист готов связаться с Вами, подробно рассказать о товаре/услугах, ответить на вопросы и обсудить возможные условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("4c458057-2388-40f2-83fb-840c43bb1ebc"),
+                            Id = new Guid("fbf73c96-5ccb-47ee-b80f-d87b10cc3bf6"),
                             ObjectionClass = "Дорого",
                             Processing = "Акцент на индивидуальный вариант",
                             Text = "\"Имя ЛПР\", я хочу предоставить Вам информацию о нашей продукции / услуге.Чтобы в случае необходимости Вы смогли воспользоваться нашим предложением.Я предлагаю вам пообщаться с нашим специалистом: он подберёт наилучший для вас вариант сотрудничества, тем более что у нас предусмотрены и(Бюджетные варианты) - если предусмотрены!"
                         },
                         new
                         {
-                            Id = new Guid("7aeb4368-12f6-4719-949e-d96a700d9cb1"),
+                            Id = new Guid("7df97fb2-84d7-45bb-bb78-4c24669c5aaf"),
                             ObjectionClass = "Дорого",
                             Processing = "Выяснение истинной причины",
                             Text = "Вопрос бюджета - серьезный вопрос.Скажите, \"Имя ЛПР\", это единственная причина или что - то еще ? А если говорить сейчас не о финансах, а о самом продукте / услуге ? В какие сроки происходит составление бюджета ? \"Имя ЛПР\", предлагаю Вам встретиться и обсудить некоторые вопросы, чтобы Вы владели максимальным объемом информации.И смогли сделать лучший для Вашей компании выбор."
                         },
                         new
                         {
-                            Id = new Guid("d16d446c-c996-44af-9e4c-ddcfa844295e"),
+                            Id = new Guid("63971be3-d8b2-4898-92ae-f9fafc4df17e"),
                             ObjectionClass = "Дорого",
                             Processing = "Цена или ценность?",
                             Text = "Скажите, пожалуйста, Вы говорите о цене или ценности ? (Цена – это стоимость приобретения товара, а стоимость – это сумма всех затрат за весь период использования товара.Так Вы сможете сообщить клиенту о предоставляемом сервисе и тех преимуществах, которые он получит как клиент Вашей компании). \"Имя ЛПР\", предлагаю Вам встретиться и обсудить некоторые вопросы, чтобы Вы владели максимальным объемом информации.И смогли сделать лучший для Вашей компании выбор."
                         },
                         new
                         {
-                            Id = new Guid("9848afab-d4e8-4f67-b616-f1345499fc46"),
+                            Id = new Guid("25112d3f-6729-410d-982b-de70ad115f55"),
                             ObjectionClass = "Дорого",
                             Processing = "Качество, обслуживание, цена!",
                             Text = "\"Имя ЛПР\", когда люди приобретают что - либо, они надеются получить три вещи: отличное качество, прекрасное обслуживание и, конечно же, минимальную цену.Но, невозможно предоставить отличное качество и прекрасное обслуживание за минимальную цену.Скажите, что для Вас важнее ? \"Имя ЛПР\", предлагаю Вам встретиться и обсудить некоторые вопросы, чтобы Вы владели максимальным объемом информации.И смогли сделать лучший для Вашей компании выбор."
                         },
                         new
                         {
-                            Id = new Guid("be05aa98-cecd-4929-8a34-0c943cba3475"),
+                            Id = new Guid("091efd61-e62f-4ecc-a519-275511090b59"),
                             ObjectionClass = "Дорого",
                             Processing = "Цена соответствует качеству",
                             Text = "Наши цены полностью соответствуют качеству предоставляемых услуг! А качество наших работ подтверждено(сертификаты / положительные отзывы или ещё что - нибудь в зависимости от сферы деятельности) + конкурентное преимущество. \"Имя ЛПР\", предлагаю Вам встретиться и обсудить некоторые вопросы, чтобы Вы владели максимальным объемом информации.И смогли сделать лучший для Вашей компании выбор"
                         },
                         new
                         {
-                            Id = new Guid("bb4f747c-7b97-45f2-a2ed-e8d64c0a7798"),
+                            Id = new Guid("2d2d7a28-7499-4721-83b3-dd99a81425fa"),
                             ObjectionClass = "Дорого",
                             Processing = "Предложение встречи",
                             Text = "В нашей отрасли цена - понятие растяжимое, она зависит от многих условий"
                         },
                         new
                         {
-                            Id = new Guid("34902837-55a3-4f63-8fb9-6280ab2d126e"),
+                            Id = new Guid("9aa1fd3e-1658-48cb-9cf2-43f429f65311"),
                             ObjectionClass = "Сейчас не актуально",
                             Processing = "Уточнение времени",
                             Text = "Подскажите, а когда Вы сможете принять решение по данному вопросу ? \"Имя ЛПР\", наш специалист с удовольствием свяжется с Вами и подробнее ответит на все интересующие вопросы.С ним Вы сможете обсудить и условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("faad62a3-af3f-45fd-aa17-af3fc890e035"),
+                            Id = new Guid("17bcfb55-2c8a-4100-bb62-2edf162a79b9"),
                             ObjectionClass = "Сейчас не актуально",
                             Processing = "Ориентировка на потребности клиентов",
                             Text = "Каждая компания уникальна! Мы не пытаемся быть идеальными, а делаем все, чтобы удовлетворить потребности наших клиентов, поэтому нас выбрали(перечислить крупных клиентов). \"Имя ЛПР\", наш специалист с удовольствием свяжется с Вами и подробнее ответит на все интересующие вопросы.С ним Вы сможете обсудить и условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("f359d95e-696d-401b-b994-fa41c17a7ad1"),
+                            Id = new Guid("6acc213d-ff71-407f-8c29-17aef5c42529"),
                             ObjectionClass = "Я подумаю/мне нужно подумать",
                             Processing = "Акцент на дополнительную информацию",
                             Text = "\"Имя ЛПР\", возможно, Вам нужна дополнительная информация, чтобы Вы могли определиться с решением ? \"Имя ЛПР\", наш специалист с удовольствием свяжется с Вами и подробнее ответит на все интересующие вопросы.С ним Вы сможете обсудить и условия сотрудничества"
                         },
                         new
                         {
-                            Id = new Guid("bc95455a-0f93-4059-a700-7529fcdf0818"),
+                            Id = new Guid("be525985-66c0-4d5b-b43e-f869be43e673"),
                             ObjectionClass = "Я подумаю/мне нужно подумать",
                             Processing = "Выяснение причины",
                             Text = "\"Имя ЛПР\", есть ли что - то в моем предложение, что Вас смущает или не нравится ? (дать ответить) Клиенты часто говорят “мне надо подумать” или “я подойду к Вам завтра” , стараясь быть вежливыми.Хотя на самом деле им что - то не нравиться. \"Имя ЛПР\", наш специалист с удовольствием свяжется с Вами и подробнее ответит на все интересующие вопросы.С ним Вы сможете обсудить и условия сотрудничества."
                         },
                         new
                         {
-                            Id = new Guid("d38778b0-8e5c-43a5-a978-3fa7b4810108"),
+                            Id = new Guid("9c1f0d8c-1899-4ff2-b1a1-1f4dc19d1ad3"),
                             ObjectionClass = "Я подумаю/мне нужно подумать",
                             Processing = "Упустили важное",
                             Text = "\"Имя ЛПР\", мне кажется, что мы не обсудили что - то очень важное.Наш специалист с удовольствием свяжется с Вами и подробнее ответит на все интересующие вопросы.С ним Вы сможете обсудить и условия сотрудничества"
                         },
                         new
                         {
-                            Id = new Guid("f6de2cc9-9529-4d10-8804-0c96c8ffbe96"),
+                            Id = new Guid("1428945e-91b7-4574-8fd4-1f294b899d4d"),
                             ObjectionClass = "Пришлите КП/подробные материалы",
                             Processing = "Широкий ассортимент =>встреча удобнее",
                             Text = "Я именно так и сделаю! Но у нас очень широкий ассортимент! А наш специалист с удовольствием готов связаться с Вами и подробнее все рассказать, и ответит на вопросы, чтобы составить для вас индивидуальное предложение! И с ним Вы сможете обсудить и условия сотрудничества"
                         },
                         new
                         {
-                            Id = new Guid("336d2e43-f71b-4057-b6a2-eada0bdb5266"),
+                            Id = new Guid("0027efa4-0199-445c-8e34-60d0055e7b24"),
                             ObjectionClass = "Пришлите КП/подробные материалы",
                             Processing = "5 минут разговора = 30 минутам чтения",
                             Text = "Вам наверняка каждый день присылают массу предложений. Я очень ценю Ваше время, поэтому предлагаю потратить пять минут на разговор, чем 20-30 минут на отправку и прочтение кипы бумаг! После чего я вышлю Вам конкретное и четкое предложение, которое точно не оставит Вас равнодушным"
                         },
                         new
                         {
-                            Id = new Guid("04614749-6efd-4f67-aab5-12444ac294c5"),
+                            Id = new Guid("01da8a9f-1ebf-4648-abdf-a3d60dd2f816"),
                             ObjectionClass = "Пришлите КП/подробные материалы",
                             Processing = "Встреча – лучший способ донесения информации",
                             Text = "«Имя ЛПР», согласитесь, что встреча на сегодняшний день самый лучший способ донесения информации? Наш специалист готов провести для Вас презентацию всех предлагаемых нами услуг, ответить на все интересующие вопросы и составить для Вас индивидуальное КП! Это сэкономит Ваше время. Скажите, пожалуйста, во «вторник» будет удобнее в первой или во второй половине дня?"
                         },
                         new
                         {
-                            Id = new Guid("e070ed9e-5347-4b33-9a5c-fa29fc862c3b"),
+                            Id = new Guid("ece954c8-e1b2-40ba-86a7-0df24272cd14"),
                             ObjectionClass = "Пришлите КП/подробные материалы",
                             Processing = "Тонкости КП",
                             Text = "Согласен, что письменное предложение важно. Но я сомневаюсь, что учту все тонкости, которые вам необходимы. Наш специалист готов провести для Вас презентацию всех предлагаемых нами услуг, ответить на все интересующие вопросы и составить для Вас индивидуальное КП! Это сэкономит Ваше время. Скажите, пожалуйста, во «вторник» будет удобнее в первой или во второй половине дня?"
                         },
                         new
                         {
-                            Id = new Guid("67a74a3c-d88b-483a-9278-a39a724c0584"),
+                            Id = new Guid("25d2ae17-0289-4c09-8774-22ca64287e62"),
                             ObjectionClass = "Нет денег",
                             Processing = "Деньги появятся",
                             Text = "Раз есть потребность, появятся и деньги. А пока что мы можем обсудить, какая продукция Вам будет нужна исходя из Ваших задач и профиля деятельности. Готовы поговорить с нашим специалистом?"
                         },
                         new
                         {
-                            Id = new Guid("75b20a1e-526a-47f3-9831-907394bd6bd2"),
+                            Id = new Guid("6d3e7ca3-2931-4996-a36e-5f31a30ca091"),
                             ObjectionClass = "Нет денег",
                             Processing = "Благодаря нам вы сэкономите",
                             Text = "Именно благодаря сотрудничеству с нами Вы сможете сократить расходы по данной статье! Мы сэкономим вам до 100 тысяч рублей в месяц. Наш специалист готов встретиться с Вами и рассказать об этом подробнее. Например, в понедельник вам удобно?"
                         },
                         new
                         {
-                            Id = new Guid("3c865eda-6096-4684-a2a2-2cae7c4428cd"),
+                            Id = new Guid("6f19fbba-23c4-433e-92dc-018f642c47bc"),
                             ObjectionClass = "Нет денег",
                             Processing = "Благодаря нам вы заработаете",
                             Text = "В этой ситуации, сотрудничество с нами поможет Вам получить дополнительную прибыль. Как раз на встрече наш специалист и расскажет Вам, чем именно сотрудничество с нами будет выгодно для Вас. Скажите, в понедельник в 10 утра Вам удобно?"
                         },
                         new
                         {
-                            Id = new Guid("3828f90e-f2f7-49fb-8cd8-c79dc5aa41b1"),
+                            Id = new Guid("48255e9c-57e6-4397-905e-49c85e85bf43"),
                             ObjectionClass = "Нет денег",
                             Processing = "есть статьи, на которые должны быть деньги",
                             Text = "Есть статьи расходов, на которые должны быть деньги. Иначе могут возникнуть проблемы с проверяющими органами вследствие несоблюдения законодательства. Наш специалист готов встретиться с вами и рассказать о том, как избежать таких проблем. Например, завтра днем вам удобно?"
                         },
                         new
                         {
-                            Id = new Guid("53a4e16f-7953-40c8-803f-307676e6433e"),
+                            Id = new Guid("369abbe1-5435-40ce-97d6-05730ac73eaa"),
                             ObjectionClass = "Отказ оплачивать счет",
                             Processing = "Зачем откладывать?",
                             Text = "Чем быстрей мы начнем работать, тем больше вы сэкономите/заработаете, ведь мне не нужно вам рассказывать о преимуществах наших услуг, вы и сами все знаете. Зачем откладывать! Когда вы оплатите счет?"
                         },
                         new
                         {
-                            Id = new Guid("bc118f7e-b4b0-4a88-8610-63969ff5a01c"),
+                            Id = new Guid("cf9e07d3-3f90-4ca8-8bf9-c4bdb43d1dcd"),
                             ObjectionClass = "Отказ оплачивать счет",
                             Processing = "Акция",
                             Text = "у нас сейчас проходит акция. И если Вы примете решение до конца месяца, то получите дополнительные выгоды. Когда вы оплатите счет?"
                         },
                         new
                         {
-                            Id = new Guid("5fb93037-4c61-40d3-b32a-ecb2939d5cfa"),
+                            Id = new Guid("4c9fc163-9218-474c-be82-647708aef840"),
                             ObjectionClass = "Работали с вами, не понравилось",
                             Processing = "Мы больше так не будем",
                             Text = "Спасибо за информацию. Я обязательно передам ее нашему Руководителю. Уверена, мы учтем ее и сделаем все возможное, чтобы такие ситуации не повторялись. А сейчас я предлагаю назначить время и пообщаться с нашим специалистом, чтобы понять, чем мы можем быть полезны Вам сегодня."
                         },
                         new
                         {
-                            Id = new Guid("22980e08-b6f9-45d0-be07-c7ec147e18e5"),
+                            Id = new Guid("d00f7b23-949a-4630-8ab9-984789e97d40"),
                             ObjectionClass = "Работали с вами, не понравилось",
                             Processing = "У нас все изменилось",
                             Text = "«Имя ЛПР», действительно, во время нашего сотрудничества у нас были проблемы с сервисом и качеством товаров. Однако с тех пор в нашей компании многое поменялось. Мы улучшили сервис, сделали дополнительный контроль качества и ведем более прозрачную ценовую политику. Поэтому предлагаю вам пообщаться с нашим специалистом и оценить все самому. Скажите, в понедельник вам удобно?"
