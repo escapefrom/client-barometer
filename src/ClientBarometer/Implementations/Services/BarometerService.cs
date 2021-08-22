@@ -158,7 +158,7 @@ namespace ClientBarometer.Implementations.Services
                 }
                 else
                 {
-                    currentMessage = string.Join(" ", new[] {currentMessage, message.Text});
+                    currentMessage = string.Join(" ", new[] {message.Text, currentMessage });
                 }
             }
             if (currentUserId != ChatConsts.DEFAULT_USER_ID)
