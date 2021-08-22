@@ -2002,6 +2002,11 @@
           "age": {
             "type": "integer",
             "format": "int32"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
           }
         }
       },

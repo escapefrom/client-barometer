@@ -1,10 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace ClientBarometer.Domain.Models
 {
     public class Chat
     {
+
+
         [Required]
         public Guid Id { get; set; }
         [Required]

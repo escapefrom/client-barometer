@@ -1024,6 +1024,7 @@ export interface PersonalInfo {
     username?: string | undefined;
     name?: string | undefined;
     age?: number;
+    readonly label?: string | undefined;
 }
 
 export interface WeatherForecast {

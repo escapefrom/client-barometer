@@ -2,7 +2,8 @@ import { SendOutlined } from "@ant-design/icons";
 import { Button, Input, message, Spin } from "antd";
 import dayjs from "dayjs";
 import React, { CSSProperties, FormEvent, useEffect, useState } from "react";
-import { sessionClient } from "../api/httpClient";
+import { useLocation, useRouteMatch } from "react-router";
+import { sessionClient, userClient } from "../api/httpClient";
 import useApi from "../api/useApi";
 import { Bubble } from "./Bubble";
 import useChatContext from "./ChatHubContext";
@@ -102,6 +103,23 @@ export const Chat: React.FC<ChatProps> = ({ chatId, username }) => {
         }
     };
 
+    const {
+        data: userInfo,
+        fetch: fetchInfo,
+    } = useApi({
+        initial: {},
+        fetchData: userClient.info,
+    });
+    const { fetch: fetchUser } = useApi({
+        initial: {},
+        fetchData: sessionClient.user,
+    });
+    useEffect(() => {
+        fetchUser(chatId)
+            .then((user) => fetchInfo(user.id))
+            .catch((e) => message.error(e.message));
+    }, [chatId, fetchInfo, fetchUser]);
+
     const spinner = (
         <div key={"spin"} style={loadingStyle}>
             <div>
@@ -114,7 +132,7 @@ export const Chat: React.FC<ChatProps> = ({ chatId, username }) => {
     return (
         <div style={mainContainerStyle}>
             <div style={titleStyle}>
-                Продаваемый товар: <b>Красные кроссовки</b>
+                Продаваемый товар: <b>{userInfo.label ?? <Spin />}</b>
             </div>
             <div style={chatContainerStyle}>
                 {loading

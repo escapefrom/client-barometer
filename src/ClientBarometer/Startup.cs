@@ -66,6 +66,8 @@ namespace ClientBarometer
                     "http://cb.escapefrom.ru:3000",
                     "http://cb.escapefrom.ru",
                     "https://cb.escapefrom.ru",
+                    "https://cb.escapefrom.ru:5443",
+                    "https://cb.escapefrom.ru:5000",
                 });
             }));
             services.AddSwaggerGen(c =>
