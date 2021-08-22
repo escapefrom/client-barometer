@@ -1,5 +1,4 @@
-import { PersonalInfo, Suggestions } from "../utilites/api/contracts";
-import { BarometerValue, Chat, Message } from "./client";
+import { BarometerValue, Chat, Message, PersonalInfo, Suggestions } from "./client";
 import { sessionClient, userClient } from "./httpClient";
 
 export function mockApi() {
@@ -60,7 +59,7 @@ export function mockApi() {
 
     sessionClient.suggestions = async (chatId: string) => {
         const suggestions: Suggestions = {
-            messages: ["Предложение 1", "Предложение 2"],
+            messages: [ { id: "1", text: "Предложение 1"}, {id: "2", text: "Предложение 2"}],
         };
         return suggestions;
     };

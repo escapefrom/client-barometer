@@ -20,7 +20,8 @@ namespace ClientBarometer.Domain.Services
         private readonly ISuggestionReadRepository _suggestionReadRepository;
         private readonly SuggestionServiceCache _cache;
 
-        public SuggestionService(IMessageReadRepository messageReadRepository, IObjectionHandlingReadRepository objectionHandlingReadRepository,
+        public SuggestionService(IMessageReadRepository messageReadRepository,
+            IObjectionHandlingReadRepository objectionHandlingReadRepository,
             ISuggestionReadRepository suggestionReadRepository)
         {
             _messageReadRepository = messageReadRepository;
@@ -44,24 +45,26 @@ namespace ClientBarometer.Domain.Services
         public async Task<Responses.Suggestions> GetSuggestions(Guid chatId, CancellationToken cancellationToken)
         {
             var message = (await _messageReadRepository.GetLastMessages(chatId, 1, cancellationToken)).FirstOrDefault();
-            var objections = await _objectionHandlingReadRepository.GetAllObjections(0, int.MaxValue, cancellationToken);
+            var objections =
+                await _objectionHandlingReadRepository.GetAllObjections(0, int.MaxValue, cancellationToken);
 
             var objectionClass = objections.Select((obj) => new KeyValuePair<string, int>(
-                obj.ObjectionClass,
-                obj.SplittedExample
-                    .Sum((se) => message.SplittedText.Contains(se) ? 1 : 0)))
-                    .Aggregate(new KeyValuePair<string, int>("Неопределено", -1), (curMax, tuple) => tuple.Value > curMax.Value ? tuple : curMax).Key;
+                    obj.ObjectionClass,
+                    obj.SplittedExample
+                        .Sum((se) => message.SplittedText.Contains(se) ? 1 : 0)))
+                .Aggregate(new KeyValuePair<string, int>("Неопределено", -1),
+                    (curMax, tuple) => tuple.Value > curMax.Value ? tuple : curMax).Key;
 
             var excludeTextIds = _cache.GetFromCache(chatId);
-            
+
             if ((await _suggestionReadRepository.GetCount(cancellationToken)) == excludeTextIds.Count())
             {
                 _cache.ClearCache();
             }
 
             var suggestions = (await _suggestionReadRepository
-                .GetNextSuggestions(objectionClass, excludeTextIds, 0, 3, cancellationToken))
-                .Select((sug) => new Responses.Suggestions.Suggestion() { Id = sug.Id, Text = sug.Text })
+                    .GetNextSuggestions(objectionClass, excludeTextIds, 0, 3, cancellationToken))
+                .Select((sug) => new Responses.Suggestion() {Id = sug.Id, Text = sug.Text})
                 .ToArray();
 
             //var suggestions = Suggestions.Where((sg, i) => messages.Length % 2 == i % 2).ToArray();

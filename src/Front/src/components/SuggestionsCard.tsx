@@ -1,5 +1,6 @@
 import { Button, message, Spin } from "antd";
 import React, { useEffect } from "react";
+import { Suggestion } from "../api/client";
 import { sessionClient } from "../api/httpClient";
 import useApi from "../api/useApi";
 import useChatContext from "./ChatHubContext";
@@ -36,11 +37,12 @@ export const SuggestionsCard: React.FC<SuggestionsProps> = ({ chatId }) => {
         return () => connection.off("NewSuggestions");
     }, [connection, setData]);
 
-    const onClick = (text: string) => async () => {
+    const onClick = (suggestion: Suggestion) => async () => {
         try {
             await sessionClient.send({
                 chatId,
-                text,
+                text: suggestion.text,
+                suggestionId: suggestion.id,
             });
         } catch (error) {
             message.error("Error sending message");

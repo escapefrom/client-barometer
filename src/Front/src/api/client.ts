@@ -36,6 +36,11 @@ export interface ISessionClient {
      * @param chatId (optional) 
      * @return Success
      */
+    reset(chatId?: string | undefined): Promise<void>;
+    /**
+     * @param chatId (optional) 
+     * @return Success
+     */
     suggestions(chatId?: string | undefined): Promise<Suggestions>;
 }
 
@@ -249,6 +254,45 @@ export class SessionClient implements ISessionClient {
             });
         }
         return Promise.resolve<BarometerValue>(<any>null);
+    }
+
+    /**
+     * @param chatId (optional) 
+     * @return Success
+     */
+    reset(chatId?: string | undefined, signal?: AbortSignal | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/session/reset?";
+        if (chatId === null)
+            throw new Error("The parameter 'chatId' cannot be null.");
+        else if (chatId !== undefined)
+            url_ += "chatId=" + encodeURIComponent("" + chatId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "POST",
+            signal,
+            headers: {
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processReset(_response);
+        });
+    }
+
+    protected processReset(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
     }
 
     /**
@@ -524,6 +568,7 @@ export interface CreateMessageRequest {
     chatId?: string;
     userSourceId?: string | undefined;
     text?: string | undefined;
+    suggestionId?: string;
 }
 
 export interface Chat {
@@ -545,8 +590,13 @@ export interface BarometerValue {
     value?: number;
 }
 
+export interface Suggestion {
+    id?: string;
+    text?: string | undefined;
+}
+
 export interface Suggestions {
-    messages?: string[] | undefined;
+    messages?: Suggestion[] | undefined;
 }
 
 export interface User2 {

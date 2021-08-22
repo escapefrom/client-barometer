@@ -26,7 +26,7 @@ namespace ClientBarometer.Implementations.Repositories
                 .Take(take)
                 .ToArrayAsync(cancellationToken);
 
-        public async Task<int> GetCount(int skip, int take, CancellationToken cancellationToken)
+        public async Task<int> GetCount(CancellationToken cancellationToken)
             => await _suggestions.CountAsync(cancellationToken);
     }
 }

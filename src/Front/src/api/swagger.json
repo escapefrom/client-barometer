@@ -205,6 +205,28 @@
         }
       }
     },
+    "/session/reset": {
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "parameters": [
+          {
+            "name": "chatId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/session/suggestions": {
       "get": {
         "tags": [
@@ -438,6 +460,10 @@
           "text": {
             "type": "string",
             "nullable": true
+          },
+          "suggestionId": {
+            "type": "string",
+            "format": "uuid"
           }
         }
       },
@@ -496,13 +522,26 @@
           }
         }
       },
+      "ClientBarometer.Contracts.Responses.Suggestion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "ClientBarometer.Contracts.Responses.Suggestions": {
         "type": "object",
         "properties": {
           "messages": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/ClientBarometer.Contracts.Responses.Suggestion"
             },
             "nullable": true
           }

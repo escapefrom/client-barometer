@@ -8,7 +8,7 @@ namespace ClientBarometer.Implementations.Services
     public class SuggestionServiceCache
     {
         private static SuggestionServiceCache _instance;
-        private readonly Dictionary<Guid, List<Guid>> _cache = new Dictionary<Guid, List<Guid>>();
+        private readonly Dictionary<Guid, List<Guid>> _cache = new ();
 
         private SuggestionServiceCache()
         {
@@ -22,14 +22,14 @@ namespace ClientBarometer.Implementations.Services
             }
             else
             {
-                _cache.Add(clientId, new List<Guid>() { suggestionId });
+                _cache.Add(clientId, new List<Guid> { suggestionId });
             }
         }
 
         public Guid[] GetFromCache(Guid clientId)
         {
             var success = _cache.TryGetValue(clientId, out var suggestionsId);
-            return success ? suggestionsId.ToArray() : new Guid[];
+            return success ? suggestionsId.ToArray() : Array.Empty<Guid>();
         }
 
         public void ClearCache()
@@ -38,6 +38,8 @@ namespace ClientBarometer.Implementations.Services
         }
 
         public static SuggestionServiceCache GetInstance()
-            => _instance != null ? _instance : new SuggestionServiceCache();
+        {
+            return _instance ??= new SuggestionServiceCache();
+        }
     }
 }
