@@ -36,8 +36,13 @@ namespace ClientBarometer.Implementations.Services
                     Text = text
                 };
             }
-
-            throw new Exception();
+            else
+            {
+                return new Requests.CreateMessageRequest
+                {
+                    Text = string.Empty
+                };
+            }
         }
     }
 }

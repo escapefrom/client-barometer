@@ -98,15 +98,20 @@ namespace ClientBarometer.Implementations.Services
             if (request is CreateAudioMessageRequest audioRequest)
             {
                 var textRequest = await _audioService.GetTextMessage(audioRequest, cancellationToken);
-                if (!await _chatReadRepository.Contains(audioRequest.ChatSourceId, cancellationToken))
+                if (!string.IsNullOrWhiteSpace(textRequest.Text))
                 {
-                    await CreateChatOnInit(textRequest, cancellationToken);
+                    if (!await _chatReadRepository.Contains(audioRequest.ChatSourceId, cancellationToken))
+                    {
+                        await CreateChatOnInit(textRequest, cancellationToken);
+                    }
+
+                    if (!await _userReadRepository.Contains(textRequest.UserSourceId, cancellationToken))
+                    {
+                        await CreateUserOnInit(textRequest, cancellationToken);
+                    }
+
+                    await _chatService.CreateMessage(textRequest, cancellationToken);
                 }
-                if (!await _userReadRepository.Contains(textRequest.UserSourceId, cancellationToken))
-                {
-                    await CreateUserOnInit(textRequest, cancellationToken);
-                }
-                await _chatService.CreateMessage(textRequest, cancellationToken);
             }
         }
 
@@ -115,11 +120,14 @@ namespace ClientBarometer.Implementations.Services
             if (request is CreateAudioMessageRequest audioRequest)
             {
                 var textRequest = await _audioService.GetTextMessage(audioRequest, cancellationToken);
-                if (!await _chatReadRepository.Contains(audioRequest.ChatSourceId, cancellationToken))
+                if (!string.IsNullOrWhiteSpace(textRequest.Text))
                 {
-                    await CreateChatOnInit(textRequest, cancellationToken);
+                    if (!await _chatReadRepository.Contains(audioRequest.ChatSourceId, cancellationToken))
+                    {
+                        await CreateChatOnInit(textRequest, cancellationToken);
+                    }
+                    await _chatService.CreateMessage(textRequest, cancellationToken);
                 }
-                await _chatService.CreateMessage(textRequest, cancellationToken);
             }
         }
         
