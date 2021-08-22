@@ -21,7 +21,7 @@ namespace ClientBarometer.Implementations.Repositories
 
         public async Task<Suggestion[]> GetNextSuggestions(string objectionClass, Guid[] excludeTextIds, int skip, int take, CancellationToken cancellationToken)
             => await _suggestions
-                .Where((sug) => objectionClass == sug.ObjectionClass && !excludeTextIds.Contains(sug.Id))
+                .Where((sug) => objectionClass.ToLower() == sug.ObjectionClass.ToLower() && !excludeTextIds.Contains(sug.Id))
                 .Skip(skip)
                 .Take(take)
                 .ToArrayAsync(cancellationToken);
