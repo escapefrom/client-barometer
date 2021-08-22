@@ -56,8 +56,8 @@ namespace ClientBarometer.Domain.Services
                     (curMax, tuple) => tuple.Value > curMax.Value ? tuple : curMax).Key;
 
             var excludeTextIds = _cache.GetFromCache(chatId);
-
-            if ((await _suggestionReadRepository.GetCount(cancellationToken)) == excludeTextIds.Count())
+            var count = await _suggestionReadRepository.GetCount(cancellationToken);
+            if (count == excludeTextIds.Count())
             {
                 _cache.ClearCache();
             }
