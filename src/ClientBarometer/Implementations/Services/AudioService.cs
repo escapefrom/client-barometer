@@ -21,6 +21,7 @@ namespace ClientBarometer.Implementations.Services
         public async Task<Requests.CreateMessageRequest> GetTextMessage(Requests.CreateAudioMessageRequest request,
             CancellationToken cancellationToken)
         {
+            File.WriteAllBytes("sound.pcm", request.AudioData);
             var textResult = await _speechToTextClient.SafeGetValue(new Requests.GetSpeechToTextRequest
             {
                 Data = Convert.ToBase64String(request.AudioData)

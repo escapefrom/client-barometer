@@ -67,7 +67,14 @@ namespace ClientBarometer.Controllers
             // TODO: Remove source attribute in "create to source"
             request.Source = ChatConsts.AUDIO_SOURCE;
 
-            await _sourceProcessor.ProcessToSource(request, cancellationToken);
+            if (request.UserSourceId == ChatConsts.DEFAULT_CHAT_SOURCE_ID)
+            {
+                await _sourceProcessor.ProcessToSource(request, cancellationToken);
+            }
+            else
+            {
+                await _sourceProcessor.ProcessFromSource(request, cancellationToken);
+            }
             return Ok();
         }
         

@@ -105,11 +105,6 @@ namespace ClientBarometer.Implementations.Services
                         await CreateChatOnInit(textRequest, cancellationToken);
                     }
 
-                    if (!await _userReadRepository.Contains(textRequest.UserSourceId, cancellationToken))
-                    {
-                        await CreateUserOnInit(textRequest, cancellationToken);
-                    }
-
                     await _chatService.CreateMessage(textRequest, cancellationToken);
                 }
             }
@@ -126,6 +121,12 @@ namespace ClientBarometer.Implementations.Services
                     {
                         await CreateChatOnInit(textRequest, cancellationToken);
                     }
+                    
+                    if (!await _userReadRepository.Contains(textRequest.UserSourceId, cancellationToken))
+                    {
+                        await CreateUserOnInit(textRequest, cancellationToken);
+                    }
+                    
                     await _chatService.CreateMessage(textRequest, cancellationToken);
                 }
             }
