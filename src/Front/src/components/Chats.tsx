@@ -16,7 +16,7 @@ export const Chats: React.FC = () => {
     });
 
     useEffect(() => {
-        fetch().catch((e) => message.error(e.message));;
+        fetch().catch((e) => message.error(e.message));
     }, [fetch]);
 
     const columns: ColumnsType<Chat> = [

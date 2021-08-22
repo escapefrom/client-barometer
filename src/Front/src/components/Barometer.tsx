@@ -1,8 +1,10 @@
 import { message, Spin } from "antd";
-import React, { CSSProperties, useCallback, useEffect, useRef } from "react";
+import React, { CSSProperties, useEffect } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
+import { BarometerValue } from "../api/client";
 import { sessionClient } from "../api/httpClient";
 import useApi from "../api/useApi";
+import useChatContext from "./ChatHubContext";
 
 const minValue = 0;
 const maxValue = 1000;
@@ -12,30 +14,25 @@ type BarometerProps = {
 };
 
 export const Barometer: React.FC<BarometerProps> = ({ chatId }) => {
-    const { firstFetchDone, data, fetch } = useApi({
-        initial: {},
+    const { loading, data, fetch, setData } = useApi({
+        initial: {} as BarometerValue,
         fetchData: sessionClient.barometer,
     });
 
-    const timer = useRef<NodeJS.Timer>();
-
-    const fetchMore = useCallback(async () => {
-        if (timer.current) {
-            clearInterval(timer.current);
-        }
-        try {
-            await fetch(chatId);
-        } catch (e) {
-            message.error(e.message);
-        }
-        timer.current = setInterval(fetchMore, 3000);
+    useEffect(() => {
+        fetch(chatId).catch((e) => message.error(e.message));
     }, [chatId, fetch]);
 
-    useEffect(() => {
-        fetchMore();
-    }, [fetchMore]);
+    const { connection } = useChatContext();
 
-    if (!firstFetchDone) {
+    useEffect(() => {
+        connection.on("NewBarometer", (message) => {
+            setData(JSON.parse(message));
+        });
+        return () => connection.off("NewBarometer");
+    }, [connection, setData]);
+
+    if (loading) {
         return <Spin />;
     }
 

@@ -1,10 +1,10 @@
 import { Card, message, Spin } from "antd";
 import React, { useEffect } from "react";
-import { userClient } from "../api/httpClient";
+import { sessionClient, userClient } from "../api/httpClient";
 import useApi from "../api/useApi";
 
 type PersonalInfoCardProps = {
-    userId: string;
+    chatId: string;
 };
 
 const cardStyle = {
@@ -12,26 +12,40 @@ const cardStyle = {
     margin: "1rem 1rem 2rem 1rem",
 };
 
-
-export const PersonalInfoCard: React.FC<PersonalInfoCardProps> = ({ userId }) => {
+export const PersonalInfoCard: React.FC<PersonalInfoCardProps> = ({ chatId }) => {
     const {
         loading,
         data: info,
-        fetch,
+        fetch: fetchInfo,
     } = useApi({
         initial: {},
         fetchData: userClient.info,
     });
 
+    const { fetch: fetchUser } = useApi({
+        initial: {},
+        fetchData: sessionClient.user,
+    });
+
     useEffect(() => {
-        fetch(userId).catch((e) => message.error(e.message));;
-    }, [userId, fetch]);
+        fetch(chatId);
+    }, [chatId, fetchInfo]);
+
+    useEffect(() => {
+        fetchUser(chatId)
+            .then((user) => fetchInfo(user.id))
+            .catch((e) => message.error(e.message));
+    }, [chatId, fetchInfo, fetchUser]);
 
     if (loading) {
         return <Spin />;
     }
 
     const { username, name, age } = info;
+
+    if (loading) {
+        return <Spin />;
+    }
 
     return (
         <Card title="Personal info" style={cardStyle}>

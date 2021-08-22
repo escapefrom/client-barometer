@@ -1,7 +1,8 @@
 import { Button, message, Spin } from "antd";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { sessionClient } from "../api/httpClient";
 import useApi from "../api/useApi";
+import useChatContext from "./ChatHubContext";
 
 type SuggestionsProps = {
     chatId: string;
@@ -13,31 +14,27 @@ const buttonStyle = {
 
 export const SuggestionsCard: React.FC<SuggestionsProps> = ({ chatId }) => {
     const {
-        firstFetchDone,
+        loading,
         data: suggestions,
         fetch,
+        setData
     } = useApi({
         initial: {},
         fetchData: sessionClient.suggestions,
     });
 
-    const timer = useRef<NodeJS.Timer>();
-
-    const fetchMore = useCallback(async () => {
-        if (timer.current) {
-            clearInterval(timer.current);
-        }
-        try {
-            await fetch(chatId);
-        } catch (e) {
-            message.error(e.message);
-        }
-        timer.current = setInterval(fetchMore, 3000);
+    useEffect(() => {
+        fetch(chatId).catch((e) => message.error(e.message));
     }, [chatId, fetch]);
 
+    const { connection } = useChatContext();
+
     useEffect(() => {
-        fetchMore();
-    }, [fetchMore]);
+        connection.on("NewSuggestions", (message) => {
+            setData(JSON.parse(message));
+        });
+        return () => connection.off("NewSuggestions");
+    }, [connection, setData]);
 
     const onClick = (text: string) => async () => {
         try {
@@ -50,7 +47,7 @@ export const SuggestionsCard: React.FC<SuggestionsProps> = ({ chatId }) => {
         }
     };
 
-    if (!firstFetchDone) {
+    if (loading) {
         return <Spin />;
     }
 
