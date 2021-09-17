@@ -15,6 +15,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -29,11 +30,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\ClientBarometer.Common.Abstractions\ClientBarometer.Common.Abstractions.csproj" />
+    <ProjectReference Include="..\Common\ClientBarometer.Common.Implementations\ClientBarometer.Common.Implementations.csproj" />
+    <ProjectReference Include="..\Finodays\Finodays.Contracts\Finodays.Contracts.csproj" />
+    <ProjectReference Include="..\Finodays\Finodays.DataAccess\Finodays.DataAccess.csproj" />
+    <ProjectReference Include="..\Finodays\Finodays.Domain\Finodays.Domain.csproj" />
+    <ProjectReference Include="..\Finodays\Finodays.Implementations\Finodays.Implementations.csproj" />
     <ProjectReference Include="..\Ngrok.Adapter\Ngrok.Adapter.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Infrastructure" />
     <Folder Include="Migrator\Migrations\ClientBarometerDb" />
   </ItemGroup>
 

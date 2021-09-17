@@ -1,9 +1,9 @@
 using ClientBarometer.Common.Implementations.Repositories;
-using ClientBarometer.Domain.Models;
-using ClientBarometer.Domain.Repositories;
+using Finodays.Domain.Models;
+using Finodays.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClientBarometer.Implementations.Repositories
+namespace Finodays.Implementations.Repositories
 {
     class UserRegisterRepository : RegisterRepository<User>, IUserRegisterRepository
     {

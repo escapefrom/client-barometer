@@ -1,4 +1,4 @@
-using ClientBarometer.Common.Infrastructure.Repositories;
+using ClientBarometer.Common.Implementations.Repositories;
 using ClientBarometer.Domain.Models;
 using ClientBarometer.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;

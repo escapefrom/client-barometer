@@ -13,7 +13,10 @@ namespace ClientBarometer.Extensions
                 {
                     options.UseMySql(connectionString,
                         ServerVersion.AutoDetect(connectionString),
-                        b => { b.EnableRetryOnFailure(2); });
+                        b => {
+                            b.EnableRetryOnFailure(2);
+                            b.MigrationsAssembly("ClientBarometer");
+                        });
                     // options.UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }));
                 });
     }

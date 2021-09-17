@@ -5,7 +5,7 @@ using System.Linq;
 using ClientBarometer.Common.Abstractions.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClientBarometer.Common.Infrastructure.Repositories
+namespace ClientBarometer.Common.Implementations.Repositories
 {
     public abstract class RegisterRepository<T>: IRegisterRepository<T>  where T : class
     {

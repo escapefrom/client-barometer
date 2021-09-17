@@ -11,6 +11,7 @@ using ClientBarometer.Implementations.Clients;
 using ClientBarometer.Implementations.Repositories;
 using ClientBarometer.Implementations.Services;
 using ClientBarometer.Implementations.UnitsOfWork;
+using Finodays.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -49,7 +50,8 @@ namespace ClientBarometer
         {
             var connectionString = Configuration.GetConnectionString("MySqlConnection");
             services
-                .AddDbContext<ClientBarometerDbContext>(connectionString);
+                .AddDbContext<ClientBarometerDbContext>(connectionString)
+                .AddDbContext<FinodaysDbContext>(connectionString);
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddCors(options => options.AddPolicy("AllowAll", conf =>
@@ -92,6 +94,8 @@ namespace ClientBarometer
                 c.BaseAddress = new Uri(_speechToTextConfig.Host);
             });
             
+            services.AddFinodays();
+            
             // Services
             services.AddMemoryCache(entry =>
             {
@@ -104,6 +108,7 @@ namespace ClientBarometer
             services.AddScoped<ISuggestionService, SuggestionService>();
             services.AddSingleton<IChatHubService, ChatHubService>();
             services.AddSingleton<IAudioService, AudioService>();
+
 
             // Repositories
             services.AddScoped<IChatReadRepository, ChatReadRepository>();
@@ -164,6 +169,11 @@ namespace ClientBarometer
                 .CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetService<ClientBarometerDbContext>())
+                {
+                    context?.Database.Migrate();
+                }
+                
+                using (var context = serviceScope.ServiceProvider.GetService<FinodaysDbContext>())
                 {
                     context?.Database.Migrate();
                 }
