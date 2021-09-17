@@ -7,7 +7,7 @@ namespace Finodays.Contracts.Responses
     {   
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public Guid UserIntId { get; set; }
+        public int UserIntId { get; set; }
         public decimal Sum { get; set; }
         public string Currency { get; set; }
         public string PurposeOfPayment { get; set; }
