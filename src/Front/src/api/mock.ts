@@ -64,7 +64,7 @@ export function mockApi() {
         return suggestions;
     };
 
-    sessionClient.user = async () => {
+    sessionClient.user2 = async () => {
         return {};
     };
 

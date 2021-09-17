@@ -7,6 +7,108 @@
 //----------------------
 // ReSharper disable InconsistentNaming
 
+export interface IFinodaysClient {
+    /**
+     * @param userId (optional) 
+     * @return Success
+     */
+    user(userId?: string | undefined): Promise<User>;
+    /**
+     * @return Success
+     */
+    users(): Promise<User[]>;
+}
+
+export class FinodaysClient implements IFinodaysClient {
+    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
+        this.http = http ? http : <any>window;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param userId (optional) 
+     * @return Success
+     */
+    user(userId?: string | undefined, signal?: AbortSignal | undefined): Promise<User> {
+        let url_ = this.baseUrl + "/finodays/user?";
+        if (userId === null)
+            throw new Error("The parameter 'userId' cannot be null.");
+        else if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent("" + userId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "GET",
+            signal,
+            headers: {
+                "Accept": "text/plain"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processUser(_response);
+        });
+    }
+
+    protected processUser(response: Response): Promise<User> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : <User>JSON.parse(_responseText, this.jsonParseReviver);
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<User>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    users(signal?: AbortSignal | undefined): Promise<User[]> {
+        let url_ = this.baseUrl + "/finodays/users";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <RequestInit>{
+            method: "GET",
+            signal,
+            headers: {
+                "Accept": "text/plain"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processUsers(_response);
+        });
+    }
+
+    protected processUsers(response: Response): Promise<User[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : <User[]>JSON.parse(_responseText, this.jsonParseReviver);
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<User[]>(<any>null);
+    }
+}
+
 export interface ISessionClient {
     /**
      * @param chatId (optional) 
@@ -19,6 +121,11 @@ export interface ISessionClient {
      */
     send(body?: CreateMessageRequest | undefined): Promise<void>;
     /**
+     * @param body (optional) 
+     * @return Success
+     */
+    send_audio(body?: CreateAudioMessageRequest | undefined): Promise<void>;
+    /**
      * @return Success
      */
     chats(): Promise<Chat[]>;
@@ -26,7 +133,7 @@ export interface ISessionClient {
      * @param chatId (optional) 
      * @return Success
      */
-    user(chatId?: string | undefined): Promise<User>;
+    user2(chatId?: string | undefined): Promise<User2>;
     /**
      * @param chatId (optional) 
      * @return Success
@@ -136,6 +243,45 @@ export class SessionClient implements ISessionClient {
     }
 
     /**
+     * @param body (optional) 
+     * @return Success
+     */
+    send_audio(body?: CreateAudioMessageRequest | undefined, signal?: AbortSignal | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/session/send_audio";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <RequestInit>{
+            body: content_,
+            method: "POST",
+            signal,
+            headers: {
+                "Content-Type": "application/json-patch+json",
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processSend_audio(_response);
+        });
+    }
+
+    protected processSend_audio(response: Response): Promise<void> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            return;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
      * @return Success
      */
     chats(signal?: AbortSignal | undefined): Promise<Chat[]> {
@@ -176,7 +322,7 @@ export class SessionClient implements ISessionClient {
      * @param chatId (optional) 
      * @return Success
      */
-    user(chatId?: string | undefined, signal?: AbortSignal | undefined): Promise<User> {
+    user2(chatId?: string | undefined, signal?: AbortSignal | undefined): Promise<User2> {
         let url_ = this.baseUrl + "/session/user?";
         if (chatId === null)
             throw new Error("The parameter 'chatId' cannot be null.");
@@ -193,17 +339,17 @@ export class SessionClient implements ISessionClient {
         };
 
         return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processUser(_response);
+            return this.processUser2(_response);
         });
     }
 
-    protected processUser(response: Response): Promise<User> {
+    protected processUser2(response: Response): Promise<User2> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : <User>JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = _responseText === "" ? null : <User2>JSON.parse(_responseText, this.jsonParseReviver);
             return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -211,7 +357,7 @@ export class SessionClient implements ISessionClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<User>(<any>null);
+        return Promise.resolve<User2>(<any>null);
     }
 
     /**
@@ -342,7 +488,7 @@ export interface ITelegramBotClient {
     /**
      * @return Success
      */
-    telegramBotGET(): Promise<User2>;
+    telegramBotGET(): Promise<User3>;
     /**
      * @param body (optional) 
      * @return Success
@@ -363,7 +509,7 @@ export class TelegramBotClient implements ITelegramBotClient {
     /**
      * @return Success
      */
-    telegramBotGET(signal?: AbortSignal | undefined): Promise<User2> {
+    telegramBotGET(signal?: AbortSignal | undefined): Promise<User3> {
         let url_ = this.baseUrl + "/api/TelegramBot";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -380,13 +526,13 @@ export class TelegramBotClient implements ITelegramBotClient {
         });
     }
 
-    protected processTelegramBotGET(response: Response): Promise<User2> {
+    protected processTelegramBotGET(response: Response): Promise<User3> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : <User2>JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = _responseText === "" ? null : <User3>JSON.parse(_responseText, this.jsonParseReviver);
             return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -394,7 +540,7 @@ export class TelegramBotClient implements ITelegramBotClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<User2>(<any>null);
+        return Promise.resolve<User3>(<any>null);
     }
 
     /**
@@ -553,6 +699,28 @@ export class WeatherForecastClient implements IWeatherForecastClient {
     }
 }
 
+export interface Transaction {
+    id?: string;
+    userId?: string;
+    userIntId?: string;
+    sum?: number;
+    currency?: string | undefined;
+    purposeOfPayment?: string | undefined;
+    mccCode?: string | undefined;
+    mccDecryption?: string | undefined;
+    createdAt?: string;
+}
+
+export interface User {
+    id?: string;
+    intId?: number;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    birthday?: string;
+    createdAt?: string;
+    transactions?: Transaction[] | undefined;
+}
+
 export interface Message {
     id?: string;
     chatId?: string;
@@ -568,7 +736,15 @@ export interface CreateMessageRequest {
     chatId?: string;
     userSourceId?: string | undefined;
     text?: string | undefined;
-    suggestionId?: string;
+    suggestionId?: string | undefined;
+}
+
+export interface CreateAudioMessageRequest {
+    source?: string | undefined;
+    chatSourceId?: string | undefined;
+    chatId?: string;
+    userSourceId?: string | undefined;
+    audioData?: string | undefined;
 }
 
 export interface Chat {
@@ -578,7 +754,7 @@ export interface Chat {
     username?: string | undefined;
 }
 
-export interface User {
+export interface User2 {
     id?: string;
     sourceId?: string | undefined;
     source?: string | undefined;
@@ -599,7 +775,7 @@ export interface Suggestions {
     messages?: Suggestion[] | undefined;
 }
 
-export interface User2 {
+export interface User3 {
     id?: number;
     isBot?: boolean;
     firstName?: string | undefined;
@@ -656,7 +832,7 @@ export interface MessageEntity {
     offset?: number;
     length?: number;
     url?: string | undefined;
-    user?: User2;
+    user?: User3;
     language?: string | undefined;
 }
 
@@ -897,18 +1073,18 @@ export type MessageType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
 
 export interface Message2 {
     messageId?: number;
-    from?: User2;
+    from?: User3;
     date?: string;
     chat?: Chat2;
     readonly isForwarded?: boolean;
-    forwardFrom?: User2;
+    forwardFrom?: User3;
     forwardFromChat?: Chat2;
     forwardFromMessageId?: number;
     forwardSignature?: string | undefined;
     forwardSenderName?: string | undefined;
     forwardDate?: string | undefined;
     replyToMessage?: Message2;
-    viaBot?: User2;
+    viaBot?: User3;
     editDate?: string | undefined;
     mediaGroupId?: string | undefined;
     authorSignature?: string | undefined;
@@ -932,8 +1108,8 @@ export interface Message2 {
     venue?: Venue;
     poll?: Poll;
     dice?: Dice;
-    newChatMembers?: User2[] | undefined;
-    leftChatMember?: User2;
+    newChatMembers?: User3[] | undefined;
+    leftChatMember?: User3;
     newChatTitle?: string | undefined;
     newChatPhoto?: PhotoSize[] | undefined;
     deleteChatPhoto?: boolean;
@@ -953,7 +1129,7 @@ export interface Message2 {
 
 export interface InlineQuery {
     id?: string | undefined;
-    from?: User2;
+    from?: User3;
     query?: string | undefined;
     location?: Location;
     offset?: string | undefined;
@@ -961,7 +1137,7 @@ export interface InlineQuery {
 
 export interface ChosenInlineResult {
     resultId?: string | undefined;
-    from?: User2;
+    from?: User3;
     location?: Location;
     inlineMessageId?: string | undefined;
     query?: string | undefined;
@@ -969,7 +1145,7 @@ export interface ChosenInlineResult {
 
 export interface CallbackQuery {
     id?: string | undefined;
-    from?: User2;
+    from?: User3;
     message?: Message2;
     inlineMessageId?: string | undefined;
     chatInstance?: string | undefined;
@@ -980,14 +1156,14 @@ export interface CallbackQuery {
 
 export interface ShippingQuery {
     id?: string | undefined;
-    from?: User2;
+    from?: User3;
     invoicePayload?: string | undefined;
     shippingAddress?: ShippingAddress;
 }
 
 export interface PreCheckoutQuery {
     id?: string | undefined;
-    from?: User2;
+    from?: User3;
     currency?: string | undefined;
     totalAmount?: number;
     invoicePayload?: string | undefined;
@@ -997,7 +1173,7 @@ export interface PreCheckoutQuery {
 
 export interface PollAnswer {
     pollId?: string | undefined;
-    user?: User2;
+    user?: User3;
     optionIds?: number[] | undefined;
 }
 

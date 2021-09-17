@@ -24,7 +24,7 @@ export const PersonalInfoCard: React.FC<PersonalInfoCardProps> = ({ chatId }) =>
 
     const { fetch: fetchUser } = useApi({
         initial: {},
-        fetchData: sessionClient.user,
+        fetchData: sessionClient.user2,
     });
 
     useEffect(() => {

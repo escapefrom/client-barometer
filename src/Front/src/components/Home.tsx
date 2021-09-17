@@ -19,10 +19,7 @@ export const Home: React.FC = () => {
         <div style={{ margin: "1rem" }}>
             <h1>Добро пожаловать!</h1>
             <p>
-                Вам просто необходимо написать боту{" "}
-                <a href={`https://telegram.im/@${botName}`} target="_blank" rel="noreferrer">
-                    @{botName}
-                </a>
+                Вам просто необходимо перейти на вкладку <a href="/finodays">Finodays</a>
             </p>
         </div>
     );

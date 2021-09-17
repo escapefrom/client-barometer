@@ -112,7 +112,7 @@ export const Chat: React.FC<ChatProps> = ({ chatId, username }) => {
     });
     const { fetch: fetchUser } = useApi({
         initial: {},
-        fetchData: sessionClient.user,
+        fetchData: sessionClient.user2,
     });
     useEffect(() => {
         fetchUser(chatId)

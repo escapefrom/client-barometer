@@ -59,6 +59,11 @@ export class NavMenu extends Component<NavMenuProps, NavMenuState> {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/finodays">
+                                        Finodays
+                                    </NavLink>
+                                </NavItem>
+                                {/* <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/chat">
                                         Chats
                                     </NavLink>
@@ -67,7 +72,7 @@ export class NavMenu extends Component<NavMenuProps, NavMenuState> {
                                     <NavLink tag={Link} className="text-dark" to="/stats">
                                         Stats
                                     </NavLink>
-                                </NavItem>
+                                </NavItem> */}
                             </ul>
                         </Collapse>
                     </Container>

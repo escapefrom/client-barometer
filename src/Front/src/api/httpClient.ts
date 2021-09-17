@@ -1,4 +1,4 @@
-import { SessionClient, TelegramBotClient, UserClient } from "./client";
+import { SessionClient, TelegramBotClient, UserClient, FinodaysClient } from "./client";
 // import { mockApi } from "./mock";
 import { binder, fetchWithTimeout, getApiEndpoint } from "./utils";
 
@@ -22,5 +22,6 @@ const httpClient = {
 export const telegramBotClient = binder(new TelegramBotClient(getApiEndpoint(), httpClient), TelegramBotClient);
 export const sessionClient = binder(new SessionClient(getApiEndpoint(), httpClient), SessionClient);
 export const userClient = binder(new UserClient(getApiEndpoint(), httpClient), UserClient);
+export const finodaysClient = binder(new FinodaysClient(getApiEndpoint(), httpClient), FinodaysClient);
 
 // mockApi();
